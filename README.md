@@ -1,4 +1,4 @@
-#Ссылки на дополнительные артефакты:
+# Ссылки на дополнительные артефакты:
 
 [Схема базы данных](https://drive.google.com/file/d/1pVdgvuwB3VpBqnsvqyPJU5w0eBlVCc8O/view?usp=sharing)
 
