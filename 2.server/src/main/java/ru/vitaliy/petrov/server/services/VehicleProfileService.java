@@ -1,0 +1,192 @@
+package ru.vitaliy.petrov.server.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import ru.vitaliy.petrov.server.error.ApiRequestException;
+import ru.vitaliy.petrov.server.error.InternalApiException;
+import ru.vitaliy.petrov.server.forms.requests.VehicleProfileCreationRequest;
+import ru.vitaliy.petrov.server.forms.requests.VehicleProfileUpdateRequest;
+import ru.vitaliy.petrov.server.forms.responses.CreationResponse;
+import ru.vitaliy.petrov.server.models.Users;
+import ru.vitaliy.petrov.server.models.VehicleInsurancePolicy;
+import ru.vitaliy.petrov.server.models.VehicleProfile;
+import ru.vitaliy.petrov.server.repositories.UsersRepository;
+import ru.vitaliy.petrov.server.repositories.VehicleInsurancePolicyRepository;
+import ru.vitaliy.petrov.server.repositories.VehicleProfileRepository;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class VehicleProfileService implements IVehicleProfileService {
+
+    @Autowired
+    private UsersRepository usersRepository;
+
+    @Autowired
+    private VehicleProfileRepository vehicleProfileRepository;
+
+    @Autowired
+    private VehicleInsurancePolicyRepository vehicleInsurancePolicyRepository;
+
+    @Override
+    public CreationResponse createNewVehicleProfile(VehicleProfileCreationRequest vehicleProfileCreationRequest, Long userID) {
+        Optional<Users> userCandidate = usersRepository.findById(userID);
+
+        if (userCandidate.isEmpty()) {
+            throw new ApiRequestException("Пользователь, создавший запрос, не был найден");
+        }
+
+        final Users user = userCandidate.get();
+        final String vehicleBrand = vehicleProfileCreationRequest.getVehicleBrand();
+        final String vehicleVIN = vehicleProfileCreationRequest.getVehicleVIN();
+        final String vehicleRegistrationSign = vehicleProfileCreationRequest.getVehicleRegistrationSign();
+        final String vehicleRegistrationCertificate = vehicleProfileCreationRequest.getVehicleRegistrationCertificate();
+        final String vehicleOwnerFullName = vehicleProfileCreationRequest.getVehicleOwnerFullName();
+        final String vehicleOwnerResidentialAddress = vehicleProfileCreationRequest.getVehicleOwnerResidentialAddress();
+        final String vehicleInsurancePolicyNumber = vehicleProfileCreationRequest.getVehicleInsurancePolicyNumber();
+
+        if (vehicleBrand == null || vehicleVIN == null || vehicleRegistrationSign == null || vehicleRegistrationCertificate == null || vehicleOwnerFullName == null || vehicleOwnerResidentialAddress == null) {
+            throw new ApiRequestException("Введенные данные некорректны");
+        }
+
+        Optional<VehicleInsurancePolicy> vehicleInsurancePolicyCandidate = vehicleInsurancePolicyRepository.findByVehicleInsurancePolicyNumber(vehicleInsurancePolicyNumber);
+
+        if (vehicleInsurancePolicyCandidate.isEmpty()) {
+            throw new ApiRequestException("Страховка машины не была найдена");
+        }
+
+        VehicleInsurancePolicy vehicleInsurancePolicy = vehicleInsurancePolicyCandidate.get();
+
+        VehicleProfile vehicleProfile = VehicleProfile
+                .builder()
+                .vehicleProfileUser(user)
+                .vehicleBrand(vehicleBrand)
+                .vehicleVin(vehicleVIN)
+                .vehicleRegistrationSign(vehicleRegistrationSign)
+                .vehicleRegistrationCertificate(vehicleRegistrationCertificate)
+                .vehicleOwnerFullName(vehicleOwnerFullName)
+                .vehicleOwnerResidentialAddress(vehicleOwnerResidentialAddress)
+                .vehicleDriver(user)
+                .vehicleInsurancePolicy(vehicleInsurancePolicy)
+                .build();
+
+        vehicleProfileRepository.save(vehicleProfile);
+
+        Optional<VehicleProfile> createdVehicleProfile = vehicleProfileRepository.findByVehicleProfileUserAndVehicleVin(user, vehicleVIN);
+
+        if (createdVehicleProfile.isEmpty()) {
+            throw new InternalApiException("Не удалось добавить профиль машины");
+        }
+
+        return new CreationResponse("VehicleProfile", createdVehicleProfile.get().getId());
+    }
+
+    @Override
+    public VehicleProfile getVehicleProfile(Long vehicleID) {
+        Optional<VehicleProfile> vehicleProfileCandidate = vehicleProfileRepository.findById(vehicleID);
+
+        if (vehicleProfileCandidate.isEmpty()) {
+            throw new ApiRequestException("Такого профиля машины не существует");
+        }
+
+        return vehicleProfileCandidate.get();
+    }
+
+    @Override
+    public List<VehicleProfile> getAllVehicleProfiles(Long userID) {
+        Optional<Users> userCandidate = usersRepository.findById(userID);
+
+        if (userCandidate.isEmpty()) {
+            throw new ApiRequestException("Пользователь не был найден");
+        }
+
+        Users user = userCandidate.get();
+
+        Optional<List<VehicleProfile>> allVehicleProfilesCandidate = vehicleProfileRepository.findAllByVehicleProfileUser(user);
+
+        if (allVehicleProfilesCandidate.isEmpty()) {
+            throw new ApiRequestException("Профили машин данного пользователя не были найдены");
+        }
+
+        return allVehicleProfilesCandidate.get();
+    }
+
+    @Override
+    public String updateVehicleProfile(VehicleProfileUpdateRequest vehicleProfileUpdateRequest, Long vehicleID) {
+
+        final String updatedVehicleBrand = vehicleProfileUpdateRequest.getUpdatedVehicleBrand();
+        final String updatedVehicleVIN = vehicleProfileUpdateRequest.getUpdatedVehicleVIN();
+        final String updatedVehicleRegistrationSign = vehicleProfileUpdateRequest.getUpdatedVehicleRegistrationSign();
+        final String updatedVehicleRegistrationCertificate = vehicleProfileUpdateRequest.getUpdatedVehicleRegistrationCertificate();
+        final String updatedVehicleOwnerFullName = vehicleProfileUpdateRequest.getUpdatedVehicleOwnerFullName();
+        final String updatedVehicleOwnerResidentialAddress = vehicleProfileUpdateRequest.getUpdatedVehicleOwnerResidentialAddress();
+        final String updatedVehicleInsurancePolicyNumber = vehicleProfileUpdateRequest.getUpdatedVehicleInsurancePolicyNumber();
+
+        if (updatedVehicleBrand == null && updatedVehicleVIN == null && updatedVehicleRegistrationSign == null && updatedVehicleRegistrationCertificate == null && updatedVehicleOwnerFullName == null && updatedVehicleOwnerResidentialAddress == null && updatedVehicleInsurancePolicyNumber == null) {
+            throw new ApiRequestException("Введенные данные неверны");
+        }
+
+        VehicleInsurancePolicy updatedVehicleInsurancePolicy = null;
+        Optional<VehicleInsurancePolicy> vehicleInsurancePolicyCandidate = vehicleInsurancePolicyRepository.findByVehicleInsurancePolicyNumber(updatedVehicleInsurancePolicyNumber);
+
+        if (vehicleInsurancePolicyCandidate.isPresent()) {
+            updatedVehicleInsurancePolicy = vehicleInsurancePolicyCandidate.get();
+        }
+
+        Optional<VehicleProfile> vehicleProfileCandidate = vehicleProfileRepository.findById(vehicleID);
+
+        if (vehicleProfileCandidate.isEmpty()) {
+            throw new ApiRequestException("Профиль машины не найден");
+        }
+
+        VehicleProfile vehicleProfile = vehicleProfileCandidate.get();
+
+        if (updatedVehicleBrand != null) {
+            vehicleProfile.setVehicleBrand(updatedVehicleBrand);
+        }
+
+        if (updatedVehicleVIN != null) {
+            vehicleProfile.setVehicleVin(updatedVehicleVIN);
+        }
+
+        if (updatedVehicleRegistrationSign != null) {
+            vehicleProfile.setVehicleRegistrationSign(updatedVehicleRegistrationSign);
+        }
+
+        if (updatedVehicleRegistrationCertificate != null) {
+            vehicleProfile.setVehicleRegistrationCertificate(updatedVehicleRegistrationCertificate);
+        }
+
+        if (updatedVehicleOwnerFullName != null) {
+            vehicleProfile.setVehicleOwnerFullName(updatedVehicleOwnerFullName);
+        }
+
+        if (updatedVehicleOwnerResidentialAddress != null) {
+            vehicleProfile.setVehicleOwnerResidentialAddress(updatedVehicleOwnerResidentialAddress);
+        }
+
+        if (updatedVehicleInsurancePolicy != null) {
+            vehicleProfile.setVehicleInsurancePolicy(updatedVehicleInsurancePolicy);
+        }
+
+        vehicleProfileRepository.save(vehicleProfile);
+        return "Профиль машины был изменен";
+    }
+
+    @Override
+    public String deleteVehicleProfile(Long vehicleID) {
+        Optional<VehicleProfile> vehicleProfileCandidate = vehicleProfileRepository.findById(vehicleID);
+
+        if (vehicleProfileCandidate.isEmpty()) {
+            throw new ApiRequestException("Такого профиля машины не существует");
+        }
+
+        VehicleProfile vehicleProfile = vehicleProfileCandidate.get();
+
+        vehicleProfileRepository.delete(vehicleProfile);
+
+        return "Профиль машины был удален";
+    }
+
+}
