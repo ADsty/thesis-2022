@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/ic_home"
+        android:title="@string/home_icon_title"
+        />
+
+    <item
+        android:id="@+id/messages"
+        android:icon="@drawable/ic_messages"
+        android:title="@string/messages_icon_title"
+        />
+
+    <item
+        android:id="@+id/user"
+        android:icon="@drawable/ic_user"
+        android:title="@string/profile_icon_title"
+        />
+
+    <item
+        android:id="@+id/map"
+        android:icon="@drawable/ic_map"
+        android:title="@string/map_icon_title"
+        />
+
+</menu>

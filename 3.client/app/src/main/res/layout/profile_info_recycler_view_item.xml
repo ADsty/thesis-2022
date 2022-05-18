@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/profile_main_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:text="Основная информация"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/gear_icon_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_gear"
+        app:layout_constraintLeft_toRightOf="@id/profile_main_info"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/profile_main_info" />
+
+    <TextView
+        android:id="@+id/person_name_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="ФИО"
+        android:textColor="@color/grey"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="@+id/profile_main_info"
+        app:layout_constraintTop_toBottomOf="@id/profile_main_info" />
+
+    <TextView
+        android:id="@+id/person_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Петров Виталий Дмитриевич"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="@+id/profile_main_info"
+        app:layout_constraintTop_toBottomOf="@id/person_name_info" />
+
+    <TextView
+        android:id="@+id/person_birthday_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Дата рождения"
+        android:textColor="@color/grey"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="@+id/profile_main_info"
+        app:layout_constraintTop_toBottomOf="@id/person_name" />
+
+    <TextView
+        android:id="@+id/person_birthday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="26.05.1999"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="@+id/profile_main_info"
+        app:layout_constraintTop_toBottomOf="@id/person_birthday_info" />
+
+    <TextView
+        android:id="@+id/person_residential_address_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Адрес регистрации"
+        android:textColor="@color/grey"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="@+id/profile_main_info"
+        app:layout_constraintTop_toBottomOf="@id/person_birthday" />
+
+    <TextView
+        android:id="@+id/person_residential_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="г. Кириши, ул. Строителей, д. 17, кв. 44"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="@+id/profile_main_info"
+        app:layout_constraintTop_toBottomOf="@id/person_residential_address_info" />
+
+    <TextView
+        android:id="@+id/person_vehicle_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Транспортные средства"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="@+id/profile_main_info"
+        app:layout_constraintTop_toBottomOf="@id/person_residential_address" />
+
+
+    <Button
+        android:id="@+id/add_vehicle_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/white"
+        android:text="Добавить ТС"
+        android:textColor="@color/black"
+        app:layout_constraintLeft_toLeftOf="@+id/profile_main_info"
+        app:layout_constraintTop_toBottomOf="@id/person_vehicle_info" />
+
+    <TextView
+        android:id="@+id/person_vehicle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Транспортное средство №1"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="@+id/profile_main_info"
+        app:layout_constraintTop_toBottomOf="@id/add_vehicle_button" />
+
+    <ImageView
+        android:id="@+id/gear_icon_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_gear"
+        app:layout_constraintLeft_toRightOf="@id/person_vehicle"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/person_vehicle" />
+
+    <TextView
+        android:id="@+id/vehicle_model_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Марка ТС"
+        android:textColor="@color/grey"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="@+id/profile_main_info"
+        app:layout_constraintTop_toBottomOf="@id/person_vehicle" />
+
+    <TextView
+        android:id="@+id/vehicle_model"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mersedes CLS"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="@+id/profile_main_info"
+        app:layout_constraintTop_toBottomOf="@id/vehicle_model_info" />
+
+    <TextView
+        android:id="@+id/VIN_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Идентификационный номер"
+        android:textColor="@color/grey"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="@+id/profile_main_info"
+        app:layout_constraintTop_toBottomOf="@id/vehicle_model" />
+
+    <TextView
+        android:id="@+id/VIN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="U2B6EXTQE58I32250"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="@+id/profile_main_info"
+        app:layout_constraintTop_toBottomOf="@id/VIN_info" />
+
+    <TextView
+        android:id="@+id/registration_info"
+        style="@style/profile_type_text"
+        android:text="Госуд. регистр. знак"
+        app:layout_constraintLeft_toLeftOf="@+id/profile_main_info"
+        app:layout_constraintTop_toBottomOf="@id/VIN" />
+
+    <TextView
+        android:id="@+id/registration"
+        style="@style/profile_info_text"
+        android:text="B 877 OP 98"
+        app:layout_constraintLeft_toLeftOf="@+id/profile_main_info"
+        app:layout_constraintTop_toBottomOf="@id/registration_info" />
+
+    <TextView
+        android:id="@+id/registration_info_reused"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Свид. о регистрации"
+        android:textColor="@color/grey"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="@+id/profile_main_info"
+        app:layout_constraintTop_toBottomOf="@id/registration" />
+
+    <TextView
+        android:id="@+id/registration_reused"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="78ET 831569"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="@+id/profile_main_info"
+        app:layout_constraintTop_toBottomOf="@id/registration_info_reused" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

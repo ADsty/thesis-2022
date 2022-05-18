@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_page_activity_nav_graph"
+    app:startDestination="@id/profileInfoFragment">
+
+    <fragment
+        android:id="@+id/mainPageFragment"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.mainpage.MainPageFragment"
+        android:label="MainPageFragment" >
+        <action
+            android:id="@+id/action_mainPageFragment_to_profileInfoFragment"
+            app:destination="@id/profileInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileInfoFragment"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.profile.ProfileInfoFragment"
+        android:label="ProfileInfoFragment" >
+        <action
+            android:id="@+id/action_profileInfoFragment_to_mainPageFragment"
+            app:destination="@id/mainPageFragment" />
+    </fragment>
+</navigation>

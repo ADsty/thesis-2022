@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">CarAccidentApp</string>
+    <string name="login_button">Войти</string>
+    <string name="phone_number_hint">Номер телефона</string>
+    <string name="password_hint">Пароль</string>
+    <string name="register_question">Не зарегистрированы?</string>
+    <string name="messages_icon_title">Сообщения</string>
+    <string name="profile_icon_title">Профиль</string>
+    <string name="map_icon_title">Карта</string>
+    <string name="home_icon_title">Главная</string>
+    <string name="wrong_login_text">Введенные данные неверны!</string>
+    <string name="login_recovery_question">Восстановить аккаунт?</string>
+    <string name="login_recovery_hint">Введите номер телефона, на который был зарегистрирован аккаунт</string>
+    <string name="phone_number_start">+7</string>
+    <string name="phone_number_format_hint">( _ _ _ )_ _ _ - _ _ - _ _</string>
+    <string name="get_code_text">Получить код</string>
+    <string name="right_arrow_description">Кнопка перехода к содержимому новости</string>
+</resources>
