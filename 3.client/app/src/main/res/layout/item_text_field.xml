@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:foreground="@color/white"
     android:hint="Ваше имя"
+    android:textColorHint="@color/grey"
     android:padding="12dp"
     app:boxStrokeColor="@color/black"
     app:errorTextColor="@color/red">

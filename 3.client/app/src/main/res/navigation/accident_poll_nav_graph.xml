@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/accident_poll_nav_graph"
+    app:startDestination="@id/carAccidentPollOfferFragment">
+
+    <fragment
+        android:id="@+id/carAccidentPollOfferFragment"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.accident.poll.CarAccidentPollOfferFragment"
+        android:label="CarAccidentPollOfferFragment" >
+        <action
+            android:id="@+id/action_carAccidentPollOfferFragment_to_mainPageActivity5"
+            app:destination="@id/mainPageActivity5" />
+        <action
+            android:id="@+id/action_carAccidentPollOfferFragment_to_carAccidentStatementActivity"
+            app:destination="@id/carAccidentStatementActivity" />
+        <action
+            android:id="@+id/action_carAccidentPollOfferFragment_to_carAccidentPollFragment1"
+            app:destination="@id/carAccidentPollFragment1" />
+    </fragment>
+    <activity
+        android:id="@+id/mainPageActivity5"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.mainpage.MainPageActivity"
+        android:label="MainPageActivity" />
+    <activity
+        android:id="@+id/carAccidentStatementActivity"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.accident.statement.CarAccidentStatementActivity"
+        android:label="CarAccidentStatementActivity" />
+    <fragment
+        android:id="@+id/carAccidentPollFragment1"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.accident.poll.CarAccidentPollFragment1"
+        android:label="CarAccidentPollFragment1" >
+        <action
+            android:id="@+id/action_carAccidentPollFragment1_to_carAccidentPollFragment2"
+            app:destination="@id/carAccidentPollFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/carAccidentPollFragment2"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.accident.poll.CarAccidentPollFragment2"
+        android:label="CarAccidentPollFragment2" >
+        <action
+            android:id="@+id/action_carAccidentPollFragment2_to_carAccidentPollFragment3"
+            app:destination="@id/carAccidentPollFragment3" />
+        <action
+            android:id="@+id/action_carAccidentPollFragment2_to_carAccidentPollFragment12"
+            app:destination="@id/carAccidentPollFragment12" />
+    </fragment>
+    <fragment
+        android:id="@+id/carAccidentPollFragment3"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.accident.poll.CarAccidentPollFragment3"
+        android:label="CarAccidentPollFragment3" >
+        <action
+            android:id="@+id/action_carAccidentPollFragment3_to_carAccidentPollFragment4"
+            app:destination="@id/carAccidentPollFragment4" />
+        <action
+            android:id="@+id/action_carAccidentPollFragment3_to_carAccidentPollFragment5"
+            app:destination="@id/carAccidentPollFragment5" />
+    </fragment>
+    <fragment
+        android:id="@+id/carAccidentPollFragment4"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.accident.poll.CarAccidentPollFragment4"
+        android:label="CarAccidentPollFragment4" >
+        <action
+            android:id="@+id/action_carAccidentPollFragment4_to_carAccidentPollFragment6"
+            app:destination="@id/carAccidentPollFragment6" />
+        <action
+            android:id="@+id/action_carAccidentPollFragment4_to_carAccidentPollFragment10"
+            app:destination="@id/carAccidentPollFragment10" />
+    </fragment>
+    <fragment
+        android:id="@+id/carAccidentPollFragment5"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.accident.poll.CarAccidentPollFragment5"
+        android:label="CarAccidentPollFragment5" >
+        <action
+            android:id="@+id/action_carAccidentPollFragment5_to_carAccidentPollFragment4"
+            app:destination="@id/carAccidentPollFragment4" />
+    </fragment>
+    <fragment
+        android:id="@+id/carAccidentPollFragment6"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.accident.poll.CarAccidentPollFragment6"
+        android:label="CarAccidentPollFragment6" >
+        <action
+            android:id="@+id/action_carAccidentPollFragment6_to_carAccidentPollFragment7"
+            app:destination="@id/carAccidentPollFragment7" />
+        <action
+            android:id="@+id/action_carAccidentPollFragment6_to_carAccidentPollFragment8"
+            app:destination="@id/carAccidentPollFragment8" />
+    </fragment>
+    <fragment
+        android:id="@+id/carAccidentPollFragment7"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.accident.poll.CarAccidentPollFragment7"
+        android:label="CarAccidentPollFragment7" >
+        <action
+            android:id="@+id/action_carAccidentPollFragment7_to_carAccidentPollFragment11"
+            app:destination="@id/carAccidentPollFragment11" />
+        <action
+            android:id="@+id/action_carAccidentPollFragment7_to_carAccidentPollFragment9"
+            app:destination="@id/carAccidentPollFragment9" />
+    </fragment>
+    <fragment
+        android:id="@+id/carAccidentPollFragment11"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.accident.poll.CarAccidentPollFragment11"
+        android:label="CarAccidentPollFragment11" >
+        <action
+            android:id="@+id/action_carAccidentPollFragment11_to_carAccidentStatementActivity"
+            app:destination="@id/carAccidentStatementActivity" />
+        <action
+            android:id="@+id/action_carAccidentPollFragment11_to_mainPageActivity5"
+            app:destination="@id/mainPageActivity5" />
+    </fragment>
+    <fragment
+        android:id="@+id/carAccidentPollFragment12"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.accident.poll.CarAccidentPollFragment12"
+        android:label="CarAccidentPollFragment12" >
+        <action
+            android:id="@+id/action_carAccidentPollFragment12_to_carAccidentPollFragment13"
+            app:destination="@id/carAccidentPollFragment13" />
+    </fragment>
+    <fragment
+        android:id="@+id/carAccidentPollFragment10"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.accident.poll.CarAccidentPollFragment10"
+        android:label="CarAccidentPollFragment10" >
+        <action
+            android:id="@+id/action_carAccidentPollFragment10_to_carAccidentStatementActivity"
+            app:destination="@id/carAccidentStatementActivity" />
+        <action
+            android:id="@+id/action_carAccidentPollFragment10_to_mainPageActivity5"
+            app:destination="@id/mainPageActivity5" />
+    </fragment>
+    <fragment
+        android:id="@+id/carAccidentPollFragment8"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.accident.poll.CarAccidentPollFragment8"
+        android:label="CarAccidentPollFragment8" >
+        <action
+            android:id="@+id/action_carAccidentPollFragment8_to_carAccidentStatementActivity"
+            app:destination="@id/carAccidentStatementActivity" />
+        <action
+            android:id="@+id/action_carAccidentPollFragment8_to_mainPageActivity5"
+            app:destination="@id/mainPageActivity5" />
+    </fragment>
+    <fragment
+        android:id="@+id/carAccidentPollFragment9"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.accident.poll.CarAccidentPollFragment9"
+        android:label="CarAccidentPollFragment9" >
+        <action
+            android:id="@+id/action_carAccidentPollFragment9_to_carAccidentStatementActivity"
+            app:destination="@id/carAccidentStatementActivity" />
+        <action
+            android:id="@+id/action_carAccidentPollFragment9_to_mainPageActivity5"
+            app:destination="@id/mainPageActivity5" />
+    </fragment>
+    <fragment
+        android:id="@+id/carAccidentPollFragment13"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.accident.poll.CarAccidentPollFragment13"
+        android:label="CarAccidentPollFragment13" >
+        <action
+            android:id="@+id/action_carAccidentPollFragment13_to_carAccidentPollFragment14"
+            app:destination="@id/carAccidentPollFragment14" />
+        <action
+            android:id="@+id/action_carAccidentPollFragment13_to_carAccidentPollFragment15"
+            app:destination="@id/carAccidentPollFragment15" />
+    </fragment>
+    <fragment
+        android:id="@+id/carAccidentPollFragment14"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.accident.poll.CarAccidentPollFragment14"
+        android:label="CarAccidentPollFragment14" >
+        <action
+            android:id="@+id/action_carAccidentPollFragment14_to_carAccidentStatementActivity"
+            app:destination="@id/carAccidentStatementActivity" />
+        <action
+            android:id="@+id/action_carAccidentPollFragment14_to_mainPageActivity5"
+            app:destination="@id/mainPageActivity5" />
+    </fragment>
+    <fragment
+        android:id="@+id/carAccidentPollFragment15"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.accident.poll.CarAccidentPollFragment15"
+        android:label="CarAccidentPollFragment15" >
+        <action
+            android:id="@+id/action_carAccidentPollFragment15_to_carAccidentPollFragment16"
+            app:destination="@id/carAccidentPollFragment16" />
+        <action
+            android:id="@+id/action_carAccidentPollFragment15_to_carAccidentPollFragment17"
+            app:destination="@id/carAccidentPollFragment17" />
+    </fragment>
+    <fragment
+        android:id="@+id/carAccidentPollFragment16"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.accident.poll.CarAccidentPollFragment16"
+        android:label="CarAccidentPollFragment16" >
+        <action
+            android:id="@+id/action_carAccidentPollFragment16_to_carAccidentStatementActivity"
+            app:destination="@id/carAccidentStatementActivity" />
+        <action
+            android:id="@+id/action_carAccidentPollFragment16_to_mainPageActivity5"
+            app:destination="@id/mainPageActivity5" />
+    </fragment>
+    <fragment
+        android:id="@+id/carAccidentPollFragment17"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.accident.poll.CarAccidentPollFragment17"
+        android:label="CarAccidentPollFragment17" >
+        <action
+            android:id="@+id/action_carAccidentPollFragment17_to_carAccidentPollFragment18"
+            app:destination="@id/carAccidentPollFragment18" />
+    </fragment>
+    <fragment
+        android:id="@+id/carAccidentPollFragment18"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.accident.poll.CarAccidentPollFragment18"
+        android:label="CarAccidentPollFragment18" >
+        <action
+            android:id="@+id/action_carAccidentPollFragment18_to_carAccidentStatementActivity"
+            app:destination="@id/carAccidentStatementActivity" />
+        <action
+            android:id="@+id/action_carAccidentPollFragment18_to_mainPageActivity5"
+            app:destination="@id/mainPageActivity5" />
+    </fragment>
+</navigation>

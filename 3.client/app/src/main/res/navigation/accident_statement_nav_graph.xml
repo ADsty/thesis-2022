@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/accident_statement_nav_graph"
+    app:startDestination="@id/carAccidentStatementGeneralInfoFragment">
+
+    <fragment
+        android:id="@+id/carAccidentStatementGeneralInfoFragment"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.accident.statement.CarAccidentStatementGeneralInfoFragment"
+        android:label="CarAccidentStatementGeneralInfoFragment" >
+        <action
+            android:id="@+id/action_carAccidentStatementGeneralInfoFragment_to_carAccidentStatementDriverLicenseFragment"
+            app:destination="@id/carAccidentStatementDriverLicenseFragment" />
+        <action
+            android:id="@+id/action_carAccidentStatementGeneralInfoFragment_to_mainPageActivity4"
+            app:destination="@id/mainPageActivity4" />
+    </fragment>
+    <fragment
+        android:id="@+id/carAccidentStatementDriverLicenseFragment"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.accident.statement.CarAccidentStatementDriverLicenseFragment"
+        android:label="CarAccidentStatementDriverLicenseFragment" >
+        <action
+            android:id="@+id/action_carAccidentStatementDriverLicenseFragment_to_carAccidentStatementVehicleInfoFragment"
+            app:destination="@id/carAccidentStatementVehicleInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/carAccidentStatementVehicleInfoFragment"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.accident.statement.CarAccidentStatementVehicleInfoFragment"
+        android:label="CarAccidentStatementVehicleInfoFragment" >
+        <action
+            android:id="@+id/action_carAccidentStatementVehicleInfoFragment_to_carAccidentStatementVehicleInsuranceFragment"
+            app:destination="@id/carAccidentStatementVehicleInsuranceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/carAccidentStatementVehicleInsuranceFragment"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.accident.statement.CarAccidentStatementVehicleInsuranceFragment"
+        android:label="CarAccidentStatementVehicleInsuranceFragment" >
+        <action
+            android:id="@+id/action_carAccidentStatementVehicleInsuranceFragment_to_carAccidentStatementExplanationFragment"
+            app:destination="@id/carAccidentStatementExplanationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/carAccidentStatementExplanationFragment"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.accident.statement.CarAccidentStatementExplanationFragment"
+        android:label="CarAccidentStatementExplanationFragment" >
+        <action
+            android:id="@+id/action_carAccidentStatementExplanationFragment_to_carAccidentStatementInfoConfirmationFragment"
+            app:destination="@id/carAccidentStatementInfoConfirmationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/carAccidentStatementInfoConfirmationFragment"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.accident.statement.CarAccidentStatementInfoConfirmationFragment"
+        android:label="CarAccidentStatementInfoConfirmationFragment" >
+        <action
+            android:id="@+id/action_carAccidentStatementInfoConfirmationFragment_to_carAccidentStatementGeneralInfoFragment"
+            app:destination="@id/carAccidentStatementGeneralInfoFragment" />
+        <action
+            android:id="@+id/action_carAccidentStatementInfoConfirmationFragment_to_carAccidentStatementDriverLicenseFragment"
+            app:destination="@id/carAccidentStatementDriverLicenseFragment" />
+        <action
+            android:id="@+id/action_carAccidentStatementInfoConfirmationFragment_to_carAccidentStatementVehicleInfoFragment"
+            app:destination="@id/carAccidentStatementVehicleInfoFragment" />
+        <action
+            android:id="@+id/action_carAccidentStatementInfoConfirmationFragment_to_carAccidentStatementVehicleInsuranceFragment"
+            app:destination="@id/carAccidentStatementVehicleInsuranceFragment" />
+        <action
+            android:id="@+id/action_carAccidentStatementInfoConfirmationFragment_to_carAccidentStatementExplanationFragment"
+            app:destination="@id/carAccidentStatementExplanationFragment" />
+        <action
+            android:id="@+id/action_carAccidentStatementInfoConfirmationFragment_to_carAccidentStatementSynchronizationFragment"
+            app:destination="@id/carAccidentStatementSynchronizationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/carAccidentStatementSynchronizationFragment"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.accident.statement.CarAccidentStatementSynchronizationFragment"
+        android:label="CarAccidentStatementSynchronizationFragment" >
+        <action
+            android:id="@+id/action_carAccidentStatementSynchronizationFragment_to_carAccidentStatementUserAdditionFragment"
+            app:destination="@id/carAccidentStatementUserAdditionFragment" />
+        <action
+            android:id="@+id/action_carAccidentStatementSynchronizationFragment_to_carAccidentStatementFinalizationFragment"
+            app:destination="@id/carAccidentStatementFinalizationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/carAccidentStatementUserAdditionFragment"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.accident.statement.CarAccidentStatementUserAdditionFragment"
+        android:label="CarAccidentStatementUserAdditionFragment" >
+        <action
+            android:id="@+id/action_carAccidentStatementUserAdditionFragment_to_carAccidentStatementSynchronizationFragment"
+            app:destination="@id/carAccidentStatementSynchronizationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/carAccidentStatementFinalizationFragment"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.accident.statement.CarAccidentStatementFinalizationFragment"
+        android:label="CarAccidentStatementFinalizationFragment" >
+        <action
+            android:id="@+id/action_carAccidentStatementFinalizationFragment_to_mainPageActivity4"
+            app:destination="@id/mainPageActivity4" />
+    </fragment>
+    <activity
+        android:id="@+id/mainPageActivity4"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.mainpage.MainPageActivity"
+        android:label="MainPageActivity" />
+</navigation>

@@ -68,46 +68,6 @@ public class CarAccidentsDocumentsService implements ICarAccidentsDocumentsServi
     }
 
     @Override
-    public CreationResponse addAdministrativeOffenceCaseDecision(AdministrativeOffenceCaseDecisionAddRequest administrativeOffenceCaseDecisionAddRequest) {
-        return null;
-    }
-
-    @Override
-    public CreationResponse addAdministrativeOffenceCaseInvestigation(AdministrativeOffenceCaseInvestigationAddRequest administrativeOffenceCaseInvestigationAddRequest) {
-        return null;
-    }
-
-    @Override
-    public CreationResponse addAdministrativeOffenceCaseProtocol(AdministrativeOffenceCaseProtocolAddRequest administrativeOffenceCaseProtocolAddRequest) {
-        return null;
-    }
-
-    @Override
-    public CreationResponse addAdministrativeOffenceCaseRefusal(AdministrativeOffenceCaseRefusalAddRequest administrativeOffenceCaseRefusalAddRequest) {
-        return null;
-    }
-
-    @Override
-    public CreationResponse addAdministrativeOffenceSceneInspection(AdministrativeOffenceSceneInspectionAddRequest administrativeOffenceSceneInspectionAddRequest) {
-        return null;
-    }
-
-    @Override
-    public CreationResponse addAdministrativeOffenceSceneScheme(AdministrativeOffenceSceneSchemeAddRequest administrativeOffenceSceneSchemeAddRequest) {
-        return null;
-    }
-
-    @Override
-    public CreationResponse addConfiscationOfDocumentsProtocol(ConfiscationOfDocumentsProtocolAddRequest confiscationOfDocumentsProtocolAddRequest) {
-        return null;
-    }
-
-    @Override
-    public CreationResponse addExplanationDocument(ExplanationDocumentAddRequest explanationDocumentAddRequest) {
-        return null;
-    }
-
-    @Override
     public AdministrativeOffenceCaseDecision getAdministrativeOffenceCaseDecision(CarAccidentInfoRequest carAccidentInfoRequest) {
         CarAccidentEntityDocuments carAccidentEntityDocuments = getCarAccidentDocuments(carAccidentInfoRequest);
         return carAccidentEntityDocuments.getAdministrativeOffenceCaseDecision();
@@ -184,46 +144,6 @@ public class CarAccidentsDocumentsService implements ICarAccidentsDocumentsServi
     }
 
     @Override
-    public String updateAdministrativeOffenceCaseDecision(AdministrativeOffenceCaseDecisionUpdateRequest administrativeOffenceCaseDecisionUpdateRequest) {
-        return null;
-    }
-
-    @Override
-    public String updateAdministrativeOffenceCaseInvestigation(AdministrativeOffenceCaseInvestigationUpdateRequest administrativeOffenceCaseInvestigationUpdateRequest) {
-        return null;
-    }
-
-    @Override
-    public String updateAdministrativeOffenceCaseProtocol(AdministrativeOffenceCaseProtocolUpdateRequest administrativeOffenceCaseProtocolUpdateRequest) {
-        return null;
-    }
-
-    @Override
-    public String updateAdministrativeOffenceCaseRefusal(AdministrativeOffenceCaseRefusalUpdateRequest administrativeOffenceCaseRefusalUpdateRequest) {
-        return null;
-    }
-
-    @Override
-    public String updateAdministrativeOffenceSceneInspection(AdministrativeOffenceSceneInspectionUpdateRequest administrativeOffenceSceneInspectionUpdateRequest) {
-        return null;
-    }
-
-    @Override
-    public String updateAdministrativeOffenceSceneScheme(AdministrativeOffenceSceneSchemeUpdateRequest administrativeOffenceSceneSchemeUpdateRequest) {
-        return null;
-    }
-
-    @Override
-    public String updateConfiscationOfDocumentsProtocol(ConfiscationOfDocumentsProtocolUpdateRequest confiscationOfDocumentsProtocolUpdateRequest) {
-        return null;
-    }
-
-    @Override
-    public String updateExplanationDocument(ExplanationDocumentUpdateRequest explanationDocumentUpdateRequest) {
-        return null;
-    }
-
-    @Override
     public String deleteAdministrativeOffenceCaseDecision(CarAccidentInfoRequest carAccidentInfoRequest) {
         CarAccidentEntityDocuments carAccidentEntityDocuments = getCarAccidentDocuments(carAccidentInfoRequest);
         administrativeOffenceCaseDecisionRepository.delete(carAccidentEntityDocuments.getAdministrativeOffenceCaseDecision());
@@ -277,6 +197,87 @@ public class CarAccidentsDocumentsService implements ICarAccidentsDocumentsServi
         ExplanationDocument explanationDocument = getExplanationDocument(carAccidentInfoRequest, userID);
         explanationDocumentRepository.delete(explanationDocument);
         return "Документ был удален";
+    }
+
+
+    @Override
+    public CreationResponse addAdministrativeOffenceCaseDecision(AdministrativeOffenceCaseDecisionAddRequest administrativeOffenceCaseDecisionAddRequest) {
+        return null;
+    }
+
+    @Override
+    public CreationResponse addAdministrativeOffenceCaseInvestigation(AdministrativeOffenceCaseInvestigationAddRequest administrativeOffenceCaseInvestigationAddRequest) {
+        return null;
+    }
+
+    @Override
+    public CreationResponse addAdministrativeOffenceCaseProtocol(AdministrativeOffenceCaseProtocolAddRequest administrativeOffenceCaseProtocolAddRequest) {
+        return null;
+    }
+
+    @Override
+    public CreationResponse addAdministrativeOffenceCaseRefusal(AdministrativeOffenceCaseRefusalAddRequest administrativeOffenceCaseRefusalAddRequest) {
+        return null;
+    }
+
+    @Override
+    public CreationResponse addAdministrativeOffenceSceneInspection(AdministrativeOffenceSceneInspectionAddRequest administrativeOffenceSceneInspectionAddRequest) {
+        return null;
+    }
+
+    @Override
+    public CreationResponse addAdministrativeOffenceSceneScheme(AdministrativeOffenceSceneSchemeAddRequest administrativeOffenceSceneSchemeAddRequest) {
+        return null;
+    }
+
+    @Override
+    public CreationResponse addConfiscationOfDocumentsProtocol(ConfiscationOfDocumentsProtocolAddRequest confiscationOfDocumentsProtocolAddRequest) {
+        return null;
+    }
+
+    @Override
+    public CreationResponse addExplanationDocument(ExplanationDocumentAddRequest explanationDocumentAddRequest) {
+        return null;
+    }
+
+    @Override
+    public String updateAdministrativeOffenceCaseDecision(AdministrativeOffenceCaseDecisionUpdateRequest administrativeOffenceCaseDecisionUpdateRequest) {
+        return null;
+    }
+
+    @Override
+    public String updateAdministrativeOffenceCaseInvestigation(AdministrativeOffenceCaseInvestigationUpdateRequest administrativeOffenceCaseInvestigationUpdateRequest) {
+        return null;
+    }
+
+    @Override
+    public String updateAdministrativeOffenceCaseProtocol(AdministrativeOffenceCaseProtocolUpdateRequest administrativeOffenceCaseProtocolUpdateRequest) {
+        return null;
+    }
+
+    @Override
+    public String updateAdministrativeOffenceCaseRefusal(AdministrativeOffenceCaseRefusalUpdateRequest administrativeOffenceCaseRefusalUpdateRequest) {
+        return null;
+    }
+
+    @Override
+    public String updateAdministrativeOffenceSceneInspection(AdministrativeOffenceSceneInspectionUpdateRequest administrativeOffenceSceneInspectionUpdateRequest) {
+        return null;
+    }
+
+    @Override
+    public String updateAdministrativeOffenceSceneScheme(AdministrativeOffenceSceneSchemeUpdateRequest administrativeOffenceSceneSchemeUpdateRequest) {
+        return null;
+    }
+
+    @Override
+    public String updateConfiscationOfDocumentsProtocol(ConfiscationOfDocumentsProtocolUpdateRequest confiscationOfDocumentsProtocolUpdateRequest) {
+        return null;
+    }
+
+    @Override
+    public String updateExplanationDocument(ExplanationDocumentUpdateRequest explanationDocumentUpdateRequest) {
+        return null;
     }
 
     private CarAccidentEntityDocuments getCarAccidentDocuments(Long carAccidentDocumentsID) {

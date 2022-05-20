@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_left_arrow"
+        android:contentDescription="@string/right_arrow_description"
+        android:clickable="true"
+        android:focusable="true"
+        android:paddingTop="15dp"
+        android:paddingStart="5dp"
+        android:minHeight="15dp"
+        android:minWidth="15dp"
+        app:layout_constraintTop_toTopOf="tv_title"
+        app:layout_constraintLeft_toLeftOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/tv_title"
+        style="@style/primary_title"
+        android:textColor="@color/black"
+        android:layout_margin="12dp"
+        android:text="Сведения о ДТП"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/field_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="50dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_title"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_title"
+        android:text="field_1"
+        android:textColor="@color/grey"
+        android:textSize="16sp"
+        />
+
+    <TextView
+        android:id="@+id/value_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/field_1"
+        app:layout_constraintLeft_toLeftOf="@+id/field_1"
+        android:text="value_1"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        />
+
+    <TextView
+        android:id="@+id/field_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/value_1"
+        app:layout_constraintLeft_toLeftOf="@+id/field_1"
+        android:text="field_2"
+        android:textColor="@color/grey"
+        android:layout_marginTop="10dp"
+        android:textSize="16sp"
+        />
+
+    <TextView
+        android:id="@+id/value_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/field_2"
+        app:layout_constraintLeft_toLeftOf="@+id/field_1"
+        android:text="value_2"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        />
+
+    <TextView
+        android:id="@+id/field_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/value_2"
+        app:layout_constraintLeft_toLeftOf="@+id/field_1"
+        android:text="field_3"
+        android:textColor="@color/grey"
+        android:layout_marginTop="10dp"
+        android:textSize="16sp"
+        />
+
+    <TextView
+        android:id="@+id/value_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/field_3"
+        app:layout_constraintLeft_toLeftOf="@+id/field_1"
+        android:text="value_3"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        />
+
+    <TextView
+        android:id="@+id/field_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/value_3"
+        app:layout_constraintLeft_toLeftOf="@+id/field_1"
+        android:text="field_4"
+        android:textColor="@color/grey"
+        android:layout_marginTop="10dp"
+        android:textSize="16sp"
+        />
+
+    <TextView
+        android:id="@+id/value_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/field_4"
+        app:layout_constraintLeft_toLeftOf="@+id/field_1"
+        android:text="value_4"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        />
+
+    <TextView
+        android:id="@+id/field_5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/value_4"
+        app:layout_constraintLeft_toLeftOf="@+id/field_1"
+        android:text="field_5"
+        android:textColor="@color/grey"
+        android:layout_marginTop="10dp"
+        android:textSize="16sp"
+        />
+
+    <TextView
+        android:id="@+id/value_5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/field_5"
+        app:layout_constraintLeft_toLeftOf="@+id/field_1"
+        android:text="value_5"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

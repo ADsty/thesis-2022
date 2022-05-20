@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/profile_info_nav_graph"
+    app:startDestination="@id/profileInfoFragment">
+
+    <fragment
+        android:id="@+id/profileInfoFragment"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.profile.ProfileInfoFragment"
+        android:label="ProfileInfoFragment" >
+        <action
+            android:id="@+id/action_profileInfoFragment_to_profileVehicleInfoChangeFragment"
+            app:destination="@id/profileVehicleInfoChangeFragment" />
+        <action
+            android:id="@+id/action_profileInfoFragment_to_profileVehicleInsuranceChangeFragment"
+            app:destination="@id/profileVehicleInsuranceChangeFragment" />
+        <action
+            android:id="@+id/action_profileInfoFragment_to_profileGeneralInfoChangeFragment"
+            app:destination="@id/profileGeneralInfoChangeFragment" />
+        <action
+            android:id="@+id/action_profileInfoFragment_to_mainPageActivity3"
+            app:destination="@id/mainPageActivity3" />
+        <action
+            android:id="@+id/action_profileInfoFragment_to_profileDriverLicenseChangeFragment"
+            app:destination="@id/profileDriverLicenseChangeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileVehicleInfoChangeFragment"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.profile.ProfileVehicleInfoChangeFragment"
+        android:label="ProfileVehicleInfoChangeFragment" >
+        <action
+            android:id="@+id/action_profileVehicleInfoChangeFragment_to_profileInfoFragment"
+            app:destination="@id/profileInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileVehicleInsuranceChangeFragment"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.profile.ProfileVehicleInsuranceChangeFragment"
+        android:label="ProfileVehicleInsuranceChangeFragment" >
+        <action
+            android:id="@+id/action_profileVehicleInsuranceChangeFragment_to_profileInfoFragment"
+            app:destination="@id/profileInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileGeneralInfoChangeFragment"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.profile.ProfileGeneralInfoChangeFragment"
+        android:label="ProfileGeneralInfoChangeFragment" >
+        <action
+            android:id="@+id/action_profileGeneralInfoChangeFragment_to_profileInfoFragment"
+            app:destination="@id/profileInfoFragment" />
+    </fragment>
+    <activity
+        android:id="@+id/mainPageActivity3"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.mainpage.MainPageActivity"
+        android:label="MainPageActivity" />
+    <fragment
+        android:id="@+id/profileDriverLicenseChangeFragment"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.profile.ProfileDriverLicenseChangeFragment"
+        android:label="ProfileDriverLicenseChangeFragment" >
+        <action
+            android:id="@+id/action_profileDriverLicenseChangeFragment_to_profileInfoFragment"
+            app:destination="@id/profileInfoFragment" />
+    </fragment>
+</navigation>
