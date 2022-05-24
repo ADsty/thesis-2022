@@ -25,7 +25,7 @@ public class UserProfile implements Serializable {
     private Long id;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "USER", referencedColumnName = "user_id", nullable = false)
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable = false)
     private Users user;
 
     @Column(name = "user_full_name", nullable = false)

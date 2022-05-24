@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.vitaliy.petrov.server.error.ApiRequestException;
 import ru.vitaliy.petrov.server.error.InternalApiException;
-import ru.vitaliy.petrov.server.forms.requests.UserProfileCreationRequest;
-import ru.vitaliy.petrov.server.forms.requests.UserProfileUpdateRequest;
+import ru.vitaliy.petrov.server.forms.requests.userprofile.UserProfileCreationRequest;
+import ru.vitaliy.petrov.server.forms.requests.userprofile.UserProfileUpdateRequest;
 import ru.vitaliy.petrov.server.forms.responses.CreationResponse;
 import ru.vitaliy.petrov.server.models.DriverLicense;
 import ru.vitaliy.petrov.server.models.UserProfile;
@@ -44,10 +44,6 @@ public class UserProfileService implements IUserProfileService {
         final String positionAtWork = userProfileCreationRequest.getPositionAtWork();
         final String workPhoneNumber = userProfileCreationRequest.getWorkPhoneNumber();
         final String driverLicenseNumber = userProfileCreationRequest.getDriverLicenseNumber();
-
-        if (fullName == null || dateOfBirth == null || residentialAddress == null || placeOfWork == null || positionAtWork == null || workPhoneNumber == null || driverLicenseNumber == null) {
-            throw new ApiRequestException("Неправильный формат введенных данных");
-        }
 
         Optional<DriverLicense> driverLicenseCandidate = driverLicenseRepository.findByDriverLicenseNumber(driverLicenseNumber);
 
@@ -96,46 +92,23 @@ public class UserProfileService implements IUserProfileService {
         final String updatedWorkPhoneNumber = userProfileUpdateRequest.getUpdatedWorkPhoneNumber();
         final String updatedDriverLicenseNumber = userProfileUpdateRequest.getUpdatedDriverLicenseNumber();
 
-        if (updatedFullName == null && updatedDateOfBirth == null && updatedResidentialAddress == null && updatedPlaceOfWork == null && updatedPositionAtWork == null && updatedWorkPhoneNumber == null && updatedDriverLicenseNumber == null) {
+        Optional<DriverLicense> driverLicenseCandidate = driverLicenseRepository.findByDriverLicenseNumber(updatedDriverLicenseNumber);
+
+        if (driverLicenseCandidate.isEmpty()) {
             throw new ApiRequestException("Введенные данные неверны");
         }
 
-        DriverLicense updatedDriverLicense = null;
-        Optional<DriverLicense> driverLicenseCandidate = driverLicenseRepository.findByDriverLicenseNumber(updatedDriverLicenseNumber);
-
-        if (driverLicenseCandidate.isPresent()) {
-            updatedDriverLicense = driverLicenseCandidate.get();
-        }
+        final DriverLicense updatedDriverLicense = driverLicenseCandidate.get();
 
         UserProfile userProfile = findUserProfileByUserID(userID);
 
-        if (updatedFullName != null) {
-            userProfile.setUserFullName(updatedFullName);
-        }
-
-        if (updatedDateOfBirth != null) {
-            userProfile.setUserDateOfBirth(updatedDateOfBirth);
-        }
-
-        if (updatedResidentialAddress != null) {
-            userProfile.setUserResidentialAddress(updatedResidentialAddress);
-        }
-
-        if (updatedPlaceOfWork != null) {
-            userProfile.setUserPlaceOfWork(updatedPlaceOfWork);
-        }
-
-        if (updatedPositionAtWork != null) {
-            userProfile.setUserPositionAtWork(updatedPositionAtWork);
-        }
-
-        if (updatedWorkPhoneNumber != null) {
-            userProfile.setUserWorkPhoneNumber(updatedWorkPhoneNumber);
-        }
-
-        if (updatedDriverLicense != null) {
-            userProfile.setUserDriverLicense(updatedDriverLicense);
-        }
+        userProfile.setUserFullName(updatedFullName);
+        userProfile.setUserDateOfBirth(updatedDateOfBirth);
+        userProfile.setUserResidentialAddress(updatedResidentialAddress);
+        userProfile.setUserPlaceOfWork(updatedPlaceOfWork);
+        userProfile.setUserPositionAtWork(updatedPositionAtWork);
+        userProfile.setUserWorkPhoneNumber(updatedWorkPhoneNumber);
+        userProfile.setUserDriverLicense(updatedDriverLicense);
 
         userProfileRepository.save(userProfile);
         return "Пользователь был изменен";

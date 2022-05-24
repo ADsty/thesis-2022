@@ -1,7 +1,7 @@
 package ru.vitaliy.petrov.server.services;
 
-import ru.vitaliy.petrov.server.forms.requests.MessageCreationRequest;
-import ru.vitaliy.petrov.server.forms.requests.MessageUpdateRequest;
+import ru.vitaliy.petrov.server.forms.requests.chats.MessageCreationRequest;
+import ru.vitaliy.petrov.server.forms.requests.chats.MessageUpdateRequest;
 import ru.vitaliy.petrov.server.forms.responses.CreationResponse;
 import ru.vitaliy.petrov.server.models.Chat;
 import ru.vitaliy.petrov.server.models.Message;

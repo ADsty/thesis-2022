@@ -28,7 +28,7 @@ public class CarAccidentParticipant implements Serializable {
     private CarAccidentEntity carAccidentEntity;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "car_accident_participant", referencedColumnName = "user_id")
+    @JoinColumn(name = "car_accident_participant", referencedColumnName = "user_id", nullable = false)
     private Users carAccidentParticipant;
 
 }

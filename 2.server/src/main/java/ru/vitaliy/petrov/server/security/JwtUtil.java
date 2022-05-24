@@ -48,12 +48,10 @@ public class JwtUtil {
             final Claims claims = extractAllClaims(token);
             final String login = claims.getSubject();
             final Long id = claims.get("id", Long.class);
-            final String password = claims.get("password", String.class);
             final String role = claims.get("role", String.class);
 
             if (!(usersDetails.getUser().getUserPhoneNumber().equals(login)
                     && usersDetails.getUser().getId().equals(id)
-                    && usersDetails.getPassword().equals(password)
                     && usersDetails.getUser().getUserRole().getUserRoleName().equals(role)
                     && !isTokenExpired(token))) {
                 throw new ForbiddenApiException("Некорректные поля токена");
@@ -66,10 +64,9 @@ public class JwtUtil {
 
     public String generateToken(UsersDetails userDetails) {
         Map<String, Object> claims = new HashMap<>();
-
+        String userRole = userDetails.getUser().getUserRole().getUserRoleName();
         claims.put("id", userDetails.getUser().getId());
-        claims.put("password", userDetails.getPassword());
-        claims.put("role", userDetails.getUser().getUserRole());
+        claims.put("role", userRole);
 
         return createToken(claims, userDetails.getUsername());
     }
@@ -90,6 +87,7 @@ public class JwtUtil {
         String jwtToken;
         if (jwtTokenHeader.startsWith("Bearer ")) {
             jwtToken = jwtTokenHeader.substring(7);
+            System.out.println(jwtToken);
         } else {
             throw new ForbiddenApiException("Некорректный префикс токена");
         }

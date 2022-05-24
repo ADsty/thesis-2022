@@ -23,4 +23,10 @@ INSERT INTO driver_license_category VALUES ('4', 'D');
 INSERT INTO driver_license_category VALUES ('5', 'M');
 
 
+INSERT INTO user_state VALUES ('1', 'Пользователь');
+INSERT INTO user_state VALUES ('2', 'Готов к работе');
+INSERT INTO user_state VALUES ('3', 'В работе');
+INSERT INTO user_state VALUES ('4', 'На отдыхе');
+
+
 COMMIT;

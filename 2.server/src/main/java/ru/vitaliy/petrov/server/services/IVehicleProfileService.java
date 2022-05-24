@@ -1,7 +1,7 @@
 package ru.vitaliy.petrov.server.services;
 
-import ru.vitaliy.petrov.server.forms.requests.VehicleProfileCreationRequest;
-import ru.vitaliy.petrov.server.forms.requests.VehicleProfileUpdateRequest;
+import ru.vitaliy.petrov.server.forms.requests.userprofile.VehicleProfileCreationRequest;
+import ru.vitaliy.petrov.server.forms.requests.userprofile.VehicleProfileUpdateRequest;
 import ru.vitaliy.petrov.server.forms.responses.CreationResponse;
 import ru.vitaliy.petrov.server.models.VehicleProfile;
 

@@ -3,6 +3,7 @@ package ru.vitaliy.petrov.server.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import ru.vitaliy.petrov.server.models.UserRole;
+import ru.vitaliy.petrov.server.models.UserState;
 import ru.vitaliy.petrov.server.models.Users;
 
 import java.util.List;
@@ -13,4 +14,6 @@ public interface UsersRepository extends JpaRepository<Users, Long>, JpaSpecific
     Optional<Users> findByUserPhoneNumber(String userPhoneNumber);
 
     List<Users> findAllByUserRole(UserRole role);
+
+    Optional<Users> findFirstByUserState(UserState userState);
 }

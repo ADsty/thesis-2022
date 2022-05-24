@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.vitaliy.petrov.server.error.ApiRequestException;
 import ru.vitaliy.petrov.server.error.InternalApiException;
-import ru.vitaliy.petrov.server.forms.requests.DriverLicenseCreationRequest;
-import ru.vitaliy.petrov.server.forms.requests.DriverLicenseUpdateRequest;
+import ru.vitaliy.petrov.server.forms.requests.userprofile.DriverLicenseCreationRequest;
+import ru.vitaliy.petrov.server.forms.requests.userprofile.DriverLicenseUpdateRequest;
 import ru.vitaliy.petrov.server.forms.responses.CreationResponse;
 import ru.vitaliy.petrov.server.models.DriverLicense;
 import ru.vitaliy.petrov.server.models.DriverLicenseCategory;
@@ -42,7 +42,7 @@ public class DriverLicenseService implements IDriverLicenseService{
 
         Optional<DriverLicenseCategory> driverLicenseCategoryCandidate = driverLicenseCategoryRepository.findByDriverLicenseCategory(driverLicenseCategory);
 
-        if(driverLicenseCategoryCandidate.isEmpty() || driverLicenseNumber == null || driverLicenseDateOfIssue == null) {
+        if(driverLicenseCategoryCandidate.isEmpty()) {
             throw new ApiRequestException("Введенные данные неверны");
         }
 
@@ -78,27 +78,18 @@ public class DriverLicenseService implements IDriverLicenseService{
         final String updatedDriverLicenseCategory = driverLicenseUpdateRequest.getUpdatedDriverLicenseCategory();
         final String updatedDriverLicenseDateOfIssue = driverLicenseUpdateRequest.getUpdatedDriverLicenseDateOfIssue();
 
-        if(updatedDriverLicenseNumber == null && updatedDriverLicenseCategory == null && updatedDriverLicenseDateOfIssue == null) {
+        Optional<DriverLicenseCategory> driverLicenseCategoryCandidate = driverLicenseCategoryRepository.findByDriverLicenseCategory(updatedDriverLicenseCategory);
+
+        if(driverLicenseCategoryCandidate.isEmpty()) {
             throw new ApiRequestException("Введенные данные неверны");
         }
 
-        DriverLicenseCategory updatedDriverLicenseCategoryEntity = null;
-
-        Optional<DriverLicenseCategory> driverLicenseCategoryCandidate = driverLicenseCategoryRepository.findByDriverLicenseCategory(updatedDriverLicenseCategory);
-
-        if(driverLicenseCategoryCandidate.isPresent()) {
-            updatedDriverLicenseCategoryEntity = driverLicenseCategoryCandidate.get();
-        }
+        final DriverLicenseCategory updatedDriverLicenseCategoryEntity = driverLicenseCategoryCandidate.get();
 
         DriverLicense driverLicense = findDriverLicenseByUserID(userID);
-
-        if(updatedDriverLicenseNumber != null) {
-            driverLicense.setDriverLicenseNumber(updatedDriverLicenseNumber);
-        }
-
-        if(updatedDriverLicenseCategory != null) {
-            driverLicense.setDriverLicenseCategory(updatedDriverLicenseCategoryEntity);
-        }
+        driverLicense.setDriverLicenseNumber(updatedDriverLicenseNumber);
+        driverLicense.setDriverLicenseCategory(updatedDriverLicenseCategoryEntity);
+        driverLicense.setDriverLicenseDateOfIssue(updatedDriverLicenseDateOfIssue);
 
         driverLicenseRepository.save(driverLicense);
         return "Водительские права были изменены";

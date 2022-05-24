@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.vitaliy.petrov.server.error.ApiRequestException;
 import ru.vitaliy.petrov.server.error.InternalApiException;
-import ru.vitaliy.petrov.server.forms.requests.VehicleInsurancePolicyCreationRequest;
-import ru.vitaliy.petrov.server.forms.requests.VehicleInsurancePolicyUpdateRequest;
+import ru.vitaliy.petrov.server.forms.requests.userprofile.VehicleInsurancePolicyCreationRequest;
+import ru.vitaliy.petrov.server.forms.requests.userprofile.VehicleInsurancePolicyUpdateRequest;
 import ru.vitaliy.petrov.server.forms.responses.CreationResponse;
 import ru.vitaliy.petrov.server.models.Users;
 import ru.vitaliy.petrov.server.models.VehicleInsurancePolicy;
@@ -36,9 +36,6 @@ public class VehicleInsurancePolicyService implements IVehicleInsurancePolicySer
         final String vehicleInsurancePolicyNumber = vehicleInsurancePolicyCreationRequest.getVehicleInsurancePolicyNumber();
         final String vehicleInsurancePolicyExpirationDate = vehicleInsurancePolicyCreationRequest.getVehicleInsurancePolicyExpirationDate();
 
-        if (vehicleInsuranceCompany == null || vehicleInsurancePolicyNumber == null || vehicleInsurancePolicyExpirationDate == null) {
-            throw new ApiRequestException("Неправильный формат введенных данных");
-        }
 
         VehicleInsurancePolicy vehicleInsurancePolicy = VehicleInsurancePolicy
                 .builder()
@@ -75,27 +72,15 @@ public class VehicleInsurancePolicyService implements IVehicleInsurancePolicySer
         final String updatedVehicleInsurancePolicyNumber = vehicleInsurancePolicyUpdateRequest.getUpdatedVehicleInsurancePolicyNumber();
         final String updatedVehicleInsurancePolicyExpirationDate = vehicleInsurancePolicyUpdateRequest.getUpdatedVehicleInsurancePolicyExpirationDate();
 
-        if (updatedVehicleInsuranceCompany == null && updatedVehicleInsurancePolicyNumber == null && updatedVehicleInsurancePolicyExpirationDate == null) {
-            throw new ApiRequestException("Введенные данные неверны");
-        }
-
         Optional<VehicleInsurancePolicy> vehicleInsurancePolicyCandidate = vehicleInsurancePolicyRepository.findById(policyID);
         if (vehicleInsurancePolicyCandidate.isEmpty()) {
             throw new ApiRequestException("Страховка не найдена");
         }
         VehicleInsurancePolicy vehicleInsurancePolicy = vehicleInsurancePolicyCandidate.get();
 
-        if (updatedVehicleInsuranceCompany != null) {
-            vehicleInsurancePolicy.setVehicleInsuranceCompany(updatedVehicleInsuranceCompany);
-        }
-
-        if (updatedVehicleInsurancePolicyNumber != null) {
-            vehicleInsurancePolicy.setVehicleInsurancePolicyNumber(updatedVehicleInsurancePolicyNumber);
-        }
-
-        if (updatedVehicleInsurancePolicyExpirationDate != null) {
-            vehicleInsurancePolicy.setVehicleInsurancePolicyExpirationDate(updatedVehicleInsurancePolicyExpirationDate);
-        }
+        vehicleInsurancePolicy.setVehicleInsuranceCompany(updatedVehicleInsuranceCompany);
+        vehicleInsurancePolicy.setVehicleInsurancePolicyNumber(updatedVehicleInsurancePolicyNumber);
+        vehicleInsurancePolicy.setVehicleInsurancePolicyExpirationDate(updatedVehicleInsurancePolicyExpirationDate);
 
         vehicleInsurancePolicyRepository.save(vehicleInsurancePolicy);
         return "Пользователь был изменен";

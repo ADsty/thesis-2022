@@ -11,7 +11,11 @@ import java.util.Optional;
 
 public interface CarAccidentParticipantRepository extends JpaRepository<CarAccidentParticipant, Long>, JpaSpecificationExecutor<CarAccidentParticipant>  {
 
-    Optional<CarAccidentParticipant> findByCarAccidentParticipant(Users carAccidentParticipant);
+    Optional<List<CarAccidentParticipant>> findAllByCarAccidentParticipant(Users carAccidentParticipant);
+
+    Optional<CarAccidentParticipant> findTopByCarAccidentParticipantOrderByIdDesc(Users carAccidentParticipant);
+
+    Optional<CarAccidentParticipant> findByCarAccidentParticipantAndCarAccidentEntity(Users participant, CarAccidentEntity entity);
 
     List<CarAccidentParticipant> findAllByCarAccidentEntity(CarAccidentEntity carAccidentEntity);
 }

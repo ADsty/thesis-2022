@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.vitaliy.petrov.server.error.ApiRequestException;
 import ru.vitaliy.petrov.server.error.InternalApiException;
-import ru.vitaliy.petrov.server.forms.requests.MessageCreationRequest;
-import ru.vitaliy.petrov.server.forms.requests.MessageUpdateRequest;
+import ru.vitaliy.petrov.server.forms.requests.chats.MessageCreationRequest;
+import ru.vitaliy.petrov.server.forms.requests.chats.MessageUpdateRequest;
 import ru.vitaliy.petrov.server.forms.responses.CreationResponse;
 import ru.vitaliy.petrov.server.models.Chat;
 import ru.vitaliy.petrov.server.models.Message;
@@ -73,6 +73,7 @@ public class ChatService implements IChatService{
         final String messageCreationDate = messageCreationRequest.getMessageCreationDate();
         final String messageCreationTime = messageCreationRequest.getMessageCreationTime();
         final String messageText = messageCreationRequest.getMessageText();
+        final String fileName = messageCreationRequest.getFileName();
         final Long chatID = messageCreationRequest.getChatID();
 
         Optional<Chat> chatCandidate = chatRepository.findById(chatID);
@@ -105,7 +106,7 @@ public class ChatService implements IChatService{
                 .builder()
                 .message(createdMessage.get())
                 .messageText(messageText)
-                .messageFileLink(" ")
+                .messageFileLink(fileName + user.getId())
                 .build();
 
         messageContentRepository.save(messageContent);
@@ -126,6 +127,7 @@ public class ChatService implements IChatService{
         final String messageUpdateDate = messageUpdateRequest.getMessageUpdateDate();
         final String messageUpdateTime = messageUpdateRequest.getMessageUpdateTime();
         final String updatedMessageText = messageUpdateRequest.getUpdatedMessageText();
+        final String fileName = messageUpdateRequest.getFileName();
 
         message.setMessageUpdateDate(messageUpdateDate);
         message.setMessageUpdateTime(messageUpdateTime);
@@ -140,6 +142,7 @@ public class ChatService implements IChatService{
 
         MessageContent messageContent = messageContentCandidate.get();
         messageContent.setMessageText(updatedMessageText);
+        messageContent.setMessageFileLink(fileName);
 
         messageContentRepository.save(messageContent);
 

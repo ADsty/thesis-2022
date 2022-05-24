@@ -29,7 +29,7 @@ public class CarAccident implements Serializable {
     private String carAccidentScene;
 
     @Column(name = "car_accident_date")
-    private Date carAccidentDate;
+    private String carAccidentDate;
 
     @Column(name = "car_accident_time")
     private String carAccidentTime;

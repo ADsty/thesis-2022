@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface CarAccidentRepository extends JpaRepository<CarAccident, Long>, JpaSpecificationExecutor<CarAccident>  {
 
-    Optional<CarAccident> findByCarAccidentSceneAndCarAccidentDateAndCarAccidentTime(String accidentScene, Date accidentDate, String accidentTime);
+    Optional<CarAccident> findByCarAccidentSceneAndCarAccidentDateAndCarAccidentTime(String accidentScene, String accidentDate, String accidentTime);
 
-    Optional<CarAccident> findByCarAccidentSceneAndCarAccidentDate(String accidentScene, Date accidentDate);
+    Optional<CarAccident> findByCarAccidentSceneAndCarAccidentDate(String accidentScene, String accidentDate);
 }

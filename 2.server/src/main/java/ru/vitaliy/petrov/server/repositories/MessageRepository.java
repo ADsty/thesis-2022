@@ -6,7 +6,6 @@ import ru.vitaliy.petrov.server.models.Chat;
 import ru.vitaliy.petrov.server.models.Message;
 import ru.vitaliy.petrov.server.models.Users;
 
-import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 

@@ -40,6 +40,7 @@ dependencies {
     testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
     implementation 'com.github.ben-manes.caffeine:caffeine'
     implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
+    implementation 'org.hibernate:hibernate-validator:6.1.0.Final'
 }
 
 tasks.named('test') {

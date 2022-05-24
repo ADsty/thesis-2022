@@ -2,7 +2,8 @@ package ru.vitaliy.petrov.server.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import ru.vitaliy.petrov.server.forms.requests.*;
+import ru.vitaliy.petrov.server.forms.requests.caraccident.CarAccidentInfoRequest;
+import ru.vitaliy.petrov.server.forms.requests.documents.*;
 import ru.vitaliy.petrov.server.forms.responses.CreationResponse;
 import ru.vitaliy.petrov.server.models.*;
 import ru.vitaliy.petrov.server.security.JwtUtil;

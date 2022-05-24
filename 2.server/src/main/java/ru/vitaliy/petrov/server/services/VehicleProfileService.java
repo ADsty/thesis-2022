@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.vitaliy.petrov.server.error.ApiRequestException;
 import ru.vitaliy.petrov.server.error.InternalApiException;
-import ru.vitaliy.petrov.server.forms.requests.VehicleProfileCreationRequest;
-import ru.vitaliy.petrov.server.forms.requests.VehicleProfileUpdateRequest;
+import ru.vitaliy.petrov.server.forms.requests.userprofile.VehicleProfileCreationRequest;
+import ru.vitaliy.petrov.server.forms.requests.userprofile.VehicleProfileUpdateRequest;
 import ru.vitaliy.petrov.server.forms.responses.CreationResponse;
 import ru.vitaliy.petrov.server.models.Users;
 import ru.vitaliy.petrov.server.models.VehicleInsurancePolicy;
@@ -123,16 +123,13 @@ public class VehicleProfileService implements IVehicleProfileService {
         final String updatedVehicleOwnerResidentialAddress = vehicleProfileUpdateRequest.getUpdatedVehicleOwnerResidentialAddress();
         final String updatedVehicleInsurancePolicyNumber = vehicleProfileUpdateRequest.getUpdatedVehicleInsurancePolicyNumber();
 
-        if (updatedVehicleBrand == null && updatedVehicleVIN == null && updatedVehicleRegistrationSign == null && updatedVehicleRegistrationCertificate == null && updatedVehicleOwnerFullName == null && updatedVehicleOwnerResidentialAddress == null && updatedVehicleInsurancePolicyNumber == null) {
+        Optional<VehicleInsurancePolicy> vehicleInsurancePolicyCandidate = vehicleInsurancePolicyRepository.findByVehicleInsurancePolicyNumber(updatedVehicleInsurancePolicyNumber);
+
+        if (vehicleInsurancePolicyCandidate.isEmpty()) {
             throw new ApiRequestException("Введенные данные неверны");
         }
 
-        VehicleInsurancePolicy updatedVehicleInsurancePolicy = null;
-        Optional<VehicleInsurancePolicy> vehicleInsurancePolicyCandidate = vehicleInsurancePolicyRepository.findByVehicleInsurancePolicyNumber(updatedVehicleInsurancePolicyNumber);
-
-        if (vehicleInsurancePolicyCandidate.isPresent()) {
-            updatedVehicleInsurancePolicy = vehicleInsurancePolicyCandidate.get();
-        }
+        final VehicleInsurancePolicy updatedVehicleInsurancePolicy = vehicleInsurancePolicyCandidate.get();
 
         Optional<VehicleProfile> vehicleProfileCandidate = vehicleProfileRepository.findById(vehicleID);
 
@@ -142,33 +139,14 @@ public class VehicleProfileService implements IVehicleProfileService {
 
         VehicleProfile vehicleProfile = vehicleProfileCandidate.get();
 
-        if (updatedVehicleBrand != null) {
-            vehicleProfile.setVehicleBrand(updatedVehicleBrand);
-        }
+        vehicleProfile.setVehicleBrand(updatedVehicleBrand);
+        vehicleProfile.setVehicleVin(updatedVehicleVIN);
+        vehicleProfile.setVehicleRegistrationSign(updatedVehicleRegistrationSign);
+        vehicleProfile.setVehicleRegistrationCertificate(updatedVehicleRegistrationCertificate);
+        vehicleProfile.setVehicleOwnerFullName(updatedVehicleOwnerFullName);
+        vehicleProfile.setVehicleOwnerResidentialAddress(updatedVehicleOwnerResidentialAddress);
+        vehicleProfile.setVehicleInsurancePolicy(updatedVehicleInsurancePolicy);
 
-        if (updatedVehicleVIN != null) {
-            vehicleProfile.setVehicleVin(updatedVehicleVIN);
-        }
-
-        if (updatedVehicleRegistrationSign != null) {
-            vehicleProfile.setVehicleRegistrationSign(updatedVehicleRegistrationSign);
-        }
-
-        if (updatedVehicleRegistrationCertificate != null) {
-            vehicleProfile.setVehicleRegistrationCertificate(updatedVehicleRegistrationCertificate);
-        }
-
-        if (updatedVehicleOwnerFullName != null) {
-            vehicleProfile.setVehicleOwnerFullName(updatedVehicleOwnerFullName);
-        }
-
-        if (updatedVehicleOwnerResidentialAddress != null) {
-            vehicleProfile.setVehicleOwnerResidentialAddress(updatedVehicleOwnerResidentialAddress);
-        }
-
-        if (updatedVehicleInsurancePolicy != null) {
-            vehicleProfile.setVehicleInsurancePolicy(updatedVehicleInsurancePolicy);
-        }
 
         vehicleProfileRepository.save(vehicleProfile);
         return "Профиль машины был изменен";

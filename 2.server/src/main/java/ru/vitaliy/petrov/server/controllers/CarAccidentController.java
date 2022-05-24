@@ -2,7 +2,7 @@ package ru.vitaliy.petrov.server.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import ru.vitaliy.petrov.server.forms.requests.*;
+import ru.vitaliy.petrov.server.forms.requests.caraccident.*;
 import ru.vitaliy.petrov.server.forms.responses.CreationResponse;
 import ru.vitaliy.petrov.server.forms.responses.StringResponse;
 import ru.vitaliy.petrov.server.models.CarAccident;
@@ -22,8 +22,8 @@ public class CarAccidentController {
     @Autowired
     private JwtUtil jwtUtil;
 
-    @PostMapping("car-accident/create")
-    public CreationResponse createNewCarAccidentWithChats(CarAccidentCreationRequest carAccidentCreationRequest, @RequestHeader("Authorization") String jwtToken) {
+    @PostMapping("/car-accident/create")
+    public CreationResponse createNewCarAccidentWithChats(@RequestBody CarAccidentCreationRequest carAccidentCreationRequest, @RequestHeader("Authorization") String jwtToken) {
         Long userID = jwtUtil.extractAllClaimsFromHeader(jwtToken).get("id", Long.class);
         return carAccidentService.createNewCarAccidentWithChats(carAccidentCreationRequest, userID);
     }
@@ -51,11 +51,6 @@ public class CarAccidentController {
     @PostMapping("/car-accident/witnessses/add")
     public CreationResponse addCarAccidentWitness(CarAccidentWitnessAddRequest carAccidentWitnessAddRequest) {
         return carAccidentService.addCarAccidentWitness(carAccidentWitnessAddRequest);
-    }
-
-    @PostMapping("/car-accident/synchronize")
-    public CreationResponse synchronizeWithExistingCarAccidentEntity(CarAccidentCreationRequest carAccidentCreationRequest) {
-        return carAccidentService.synchronizeWithExistingCarAccidentEntity(carAccidentCreationRequest);
     }
 
     @DeleteMapping("/car-accident/participants/delete")

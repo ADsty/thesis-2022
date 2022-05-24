@@ -6,6 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 
@@ -33,5 +36,9 @@ public class Users implements Serializable {
     @ManyToOne(optional = false)
     @JoinColumn(name = "user_role", referencedColumnName = "user_role_id", nullable = false)
     private UserRole userRole;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "user_state", referencedColumnName = "user_state_id", nullable = false)
+    private UserState userState;
 
 }
