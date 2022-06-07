@@ -62,6 +62,19 @@ public class JwtUtil {
         }
     }
 
+    public void checkTokenUserRole(String token, String userRole) {
+        try {
+            final Claims claims = extractAllClaimsFromHeader(token);
+            final String role = claims.get("role", String.class);
+            if (!role.equals(userRole)) {
+                throw new ForbiddenApiException("Вы не имеете доступа к данному методу");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new ForbiddenApiException("Некорректный токен");
+        }
+    }
+
     public String generateToken(UsersDetails userDetails) {
         Map<String, Object> claims = new HashMap<>();
         String userRole = userDetails.getUser().getUserRole().getUserRoleName();

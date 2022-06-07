@@ -4,24 +4,23 @@ import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.sql.Date;
+import java.sql.Time;
 
 @Data
 public class AdministrativeOffenceSceneInspectionAddRequest {
 
     @NotNull
-    @NotEmpty
-    private final String dateOfFill;
+    private final Date dateOfFill;
 
     @NotNull
-    @NotEmpty
-    private final String timeOfFill;
+    private final Time timeOfFill;
 
     @NotNull
     @NotEmpty
     private final String placeOfFill;
 
     @NotNull
-    @NotEmpty
     private final Long policeOfficerID;
 
     @NotNull
@@ -29,34 +28,15 @@ public class AdministrativeOffenceSceneInspectionAddRequest {
     private final Boolean cameraUsage;
 
     @NotNull
-    @NotEmpty
-    private final String firstWitnessFullName;
+    private final Long firstWitnessID;
 
     @NotNull
-    @NotEmpty
-    private final String firstWitnessResidentialAddress;
-
-    @NotNull
-    @NotEmpty
-    private final String firstWitnessPhoneNumber;
-
-    @NotNull
-    @NotEmpty
-    private final String secondWitnessFullName;
-
-    @NotNull
-    @NotEmpty
-    private final String secondWitnessResidentialAddress;
-
-    @NotNull
-    @NotEmpty
-    private final String secondWitnessPhoneNumber;
+    private final Long secondWitnessID;
 
     @NotNull
     @NotEmpty
     private final String sceneInspectionInfo;
 
     @NotNull
-    @NotEmpty
-    private final Long entityDocumentsID;
+    private final Long carAccidentEntityID;
 }

@@ -7,6 +7,7 @@ public class ApiRequestException extends RuntimeException {
 
     public ApiRequestException(String message) {
         super(message);
+        this.httpStatus = HttpStatus.BAD_REQUEST;
     }
 
     public ApiRequestException(String message, HttpStatus httpStatus) {

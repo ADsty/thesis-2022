@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
-import java.time.LocalTime;
+import java.sql.Time;
 
 @Data
 @AllArgsConstructor
@@ -29,10 +29,10 @@ public class CarAccident implements Serializable {
     private String carAccidentScene;
 
     @Column(name = "car_accident_date")
-    private String carAccidentDate;
+    private Date carAccidentDate;
 
     @Column(name = "car_accident_time")
-    private String carAccidentTime;
+    private Time carAccidentTime;
 
     @Column(name = "car_accident_participants_number")
     private int carAccidentParticipantsNumber;

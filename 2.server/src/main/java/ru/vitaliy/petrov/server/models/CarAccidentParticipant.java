@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Data
@@ -23,6 +24,7 @@ public class CarAccidentParticipant implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
     @ManyToOne(optional = false)
     @JoinColumn(name = "car_accident_entity", referencedColumnName = "car_accident_entity_id", nullable = false)
     private CarAccidentEntity carAccidentEntity;
@@ -30,5 +32,9 @@ public class CarAccidentParticipant implements Serializable {
     @ManyToOne(optional = false)
     @JoinColumn(name = "car_accident_participant", referencedColumnName = "user_id", nullable = false)
     private Users carAccidentParticipant;
+
+    @ManyToOne()
+    @JoinColumn(name = "participant_vehicle", referencedColumnName = "vehicle_profile_id", nullable = false)
+    private VehicleProfile participantVehicle;
 
 }

@@ -23,22 +23,13 @@ public class WitnessesAdditionalInfo implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "first_witness_full_name", nullable = false)
-    private String firstWitnessFullName;
+    @ManyToOne
+    @JoinColumn(name = "first_witness", referencedColumnName = "car_accident_witness_id", nullable = false)
+    private CarAccidentWitness firstWitness;
 
-    @Column(name = "first_witness_residential_address", nullable = false)
-    private String firstWitnessResidentialAddress;
 
-    @Column(name = "first_witness_phone_number", nullable = false)
-    private String firstWitnessPhoneNumber;
-
-    @Column(name = "second_witness_full_name", nullable = false)
-    private String secondWitnessFullName;
-
-    @Column(name = "second_witness_residential_address", nullable = false)
-    private String secondWitnessResidentialAddress;
-
-    @Column(name = "second_witness_phone_number", nullable = false)
-    private String secondWitnessPhoneNumber;
+    @ManyToOne
+    @JoinColumn(name = "second_witness", referencedColumnName = "car_accident_witness_id", nullable = false)
+    private CarAccidentWitness secondWitness;
 
 }

@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Date;
+import java.sql.Time;
 
 @Data
 @AllArgsConstructor
@@ -28,10 +30,10 @@ public class ExplanationDocument implements Serializable {
     private CarAccidentEntityDocuments carAccidentEntityDocuments;
 
     @Column(name = "date_of_fill", nullable = false)
-    private String dateOfFill;
+    private Date dateOfFill;
 
     @Column(name = "time_of_fill", nullable = false)
-    private String timeOfFill;
+    private Time timeOfFill;
 
     @Column(name = "place_of_fill", nullable = false)
     private String placeOfFill;
@@ -41,8 +43,12 @@ public class ExplanationDocument implements Serializable {
     private Users trafficPoliceOfficer;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "car_accident_participant", referencedColumnName = "user_id", nullable = false)
+    @JoinColumn(name = "car_accident_participant", referencedColumnName = "user_id")
     private Users carAccidentParticipant;
+
+    @ManyToOne
+    @JoinColumn(name = "car_accident_witness", referencedColumnName = "car_accident_witness_id")
+    private CarAccidentWitness carAccidentWitness;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "interviewed_person_type", referencedColumnName = "interviewed_person_type_id", nullable = false)

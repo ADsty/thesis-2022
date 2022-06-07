@@ -32,7 +32,4 @@ public class MessageContent implements Serializable {
     @Column(name = "message_text")
     private String messageText;
 
-    @Column(name = "message_file_link")
-    private String messageFileLink;
-
 }

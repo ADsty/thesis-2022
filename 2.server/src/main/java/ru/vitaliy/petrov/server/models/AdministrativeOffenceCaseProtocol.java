@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Date;
+import java.sql.Time;
 
 @Data
 @AllArgsConstructor
@@ -24,10 +26,10 @@ public class AdministrativeOffenceCaseProtocol implements Serializable {
     private Long id;
 
     @Column(name = "date_of_fill", nullable = false)
-    private String dateOfFill;
+    private Date dateOfFill;
 
     @Column(name = "time_of_fill", nullable = false)
-    private String timeOfFill;
+    private Time timeOfFill;
 
     @Column(name = "place_of_fill", nullable = false)
     private String placeOfFill;
@@ -40,9 +42,8 @@ public class AdministrativeOffenceCaseProtocol implements Serializable {
     @JoinColumn(name = "car_accident_culprit", referencedColumnName = "user_id", nullable = false)
     private Users carAccidentCulprit;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "culprit_additional_info", referencedColumnName = "culprit_additional_info_id", nullable = false)
-    private CulpritAdditionalInfo culpritAdditionalInfo;
+    @Column(name = "culprit_actual_place_of_residence", nullable = false)
+    private String culpritActualPlaceOfResidence;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "car_accident_entity", referencedColumnName = "car_accident_entity_id", nullable = false)

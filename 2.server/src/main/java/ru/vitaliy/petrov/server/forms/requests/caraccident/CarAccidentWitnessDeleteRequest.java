@@ -9,6 +9,5 @@ import javax.validation.constraints.NotNull;
 public class CarAccidentWitnessDeleteRequest {
 
     @NotNull
-    @NotEmpty
     private final Long witnessID;
 }

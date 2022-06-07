@@ -4,24 +4,23 @@ import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.sql.Date;
+import java.sql.Time;
 
 @Data
 public class AdministrativeOffenceCaseRefusalAddRequest {
 
     @NotNull
-    @NotEmpty
-    private final String dateOfFill;
+    private final Date dateOfFill;
 
     @NotNull
-    @NotEmpty
-    private final String timeOfFill;
+    private final Time timeOfFill;
 
     @NotNull
     @NotEmpty
     private final String placeOfFill;
 
     @NotNull
-    @NotEmpty
     private final Long policeOfficerID;
 
     @NotNull
@@ -41,6 +40,5 @@ public class AdministrativeOffenceCaseRefusalAddRequest {
     private final String refusalLawInfo;
 
     @NotNull
-    @NotEmpty
-    private final Long entityDocumentsID;
+    private final Long carAccidentEntityID;
 }

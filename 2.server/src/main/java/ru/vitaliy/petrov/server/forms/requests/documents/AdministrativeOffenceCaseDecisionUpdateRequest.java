@@ -4,24 +4,26 @@ import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.sql.Date;
+import java.sql.Time;
 
 @Data
 public class AdministrativeOffenceCaseDecisionUpdateRequest {
 
     @NotNull
-    @NotEmpty
-    private final String updatedDateOfFill;
+    private final Long documentID;
 
     @NotNull
-    @NotEmpty
-    private final String updatedTimeOfFill;
+    private final Date updatedDateOfFill;
+
+    @NotNull
+    private final Time updatedTimeOfFill;
 
     @NotNull
     @NotEmpty
     private final String updatedPlaceOfFill;
 
     @NotNull
-    @NotEmpty
     private final Long updatedCulpritID;
 
     @NotNull
@@ -37,14 +39,11 @@ public class AdministrativeOffenceCaseDecisionUpdateRequest {
     private final String updatedCaseDecision;
 
     @NotNull
-    @NotEmpty
-    private final String updatedDateOfReceiving;
+    private final Date updatedDateOfReceiving;
 
     @NotNull
-    @NotEmpty
-    private final String updatedEffectiveDate;
+    private final Date updatedEffectiveDate;
 
     @NotNull
-    @NotEmpty
-    private final Long entityDocumentsID;
+    private final Long carAccidentEntityID;
 }

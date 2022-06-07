@@ -6,7 +6,7 @@ import ru.vitaliy.petrov.server.models.DriverLicense;
 
 import java.util.Optional;
 
-public interface DriverLicenseRepository extends JpaRepository<DriverLicense, Long>, JpaSpecificationExecutor<DriverLicense>  {
+public interface DriverLicenseRepository extends JpaRepository<DriverLicense, Long>, JpaSpecificationExecutor<DriverLicense> {
 
     Optional<DriverLicense> findByDriverLicenseNumber(String driverLicenseNumber);
 }

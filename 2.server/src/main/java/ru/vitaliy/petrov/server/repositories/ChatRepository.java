@@ -7,7 +7,9 @@ import ru.vitaliy.petrov.server.models.Users;
 
 import java.util.List;
 
-public interface ChatRepository extends JpaRepository<Chat, Long>, JpaSpecificationExecutor<Chat>  {
+public interface ChatRepository extends JpaRepository<Chat, Long>, JpaSpecificationExecutor<Chat> {
 
     List<Chat> findAllByCarAccidentParticipant(Users user);
+
+    List<Chat> findAllByTrafficPoliceOfficer(Users officer);
 }

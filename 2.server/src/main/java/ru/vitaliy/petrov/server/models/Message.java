@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
+import java.sql.Time;
 
 @Data
 @AllArgsConstructor
@@ -37,15 +38,15 @@ public class Message implements Serializable {
     private Chat chat;
 
     @Column(name = "message_creation_date")
-    private String messageCreationDate;
+    private Date messageCreationDate;
 
     @Column(name = "message_creation_time")
-    private String messageCreationTime;
+    private Time messageCreationTime;
 
     @Column(name = "message_update_date")
-    private String messageUpdateDate;
+    private Date messageUpdateDate;
 
     @Column(name = "message_update_time")
-    private String messageUpdateTime;
+    private Time messageUpdateTime;
 
 }

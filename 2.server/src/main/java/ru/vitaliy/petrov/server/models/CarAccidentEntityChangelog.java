@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Date;
+import java.sql.Time;
 
 @Data
 @AllArgsConstructor
@@ -27,6 +29,16 @@ public class CarAccidentEntityChangelog implements Serializable {
     @JoinColumn(name = "car_accident_entity", referencedColumnName = "car_accident_entity_id")
     private CarAccidentEntity carAccidentEntity;
 
+    @Column(name = "change_date")
+    private Date changeDate;
+
+    @Column(name = "change_time")
+    private Time changeTime;
+
     @Column(name = "change_description")
     private String changeDescription;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "change_label", referencedColumnName = "change_label_id")
+    private ChangeLabel changeLabel;
 }

@@ -28,33 +28,32 @@ public class UsersController {
     private JwtUtil jwtUtil;
 
     @PostMapping("/register")
-    public TokenResponse registration(@Valid UserRegistrationRequest userRegistrationRequest, BindingResult bindingResult){
-        if(bindingResult.hasErrors())
+    public TokenResponse registration(@Valid UserRegistrationRequest userRegistrationRequest, BindingResult bindingResult) {
+        if (bindingResult.hasErrors())
             throw new ApiRequestException("Введенные данные неверны");
         String jwtToken = usersService.register(userRegistrationRequest);
         return new TokenResponse(jwtToken);
     }
 
     @PostMapping("/login")
-    public TokenResponse login(@Valid UserLoginRequest userLoginRequest, BindingResult bindingResult){
-        if(bindingResult.hasErrors())
+    public TokenResponse login(@Valid UserLoginRequest userLoginRequest, BindingResult bindingResult) {
+        if (bindingResult.hasErrors())
             throw new ApiRequestException("Введенные данные неверны");
         String jwtToken = usersService.login(userLoginRequest);
         return new TokenResponse(jwtToken);
     }
 
     @GetMapping("/validate")
-    public TokenResponse validate(@RequestHeader("Authorization") String jwtToken){
+    public TokenResponse validate(@RequestHeader("Authorization") String jwtToken) {
         String validatedToken = usersService.validateToken(jwtToken);
         return new TokenResponse(validatedToken);
     }
 
     @PatchMapping("/update-user")
-    public TokenResponse updateUser(@RequestHeader("Authorization") String jwtToken, @Valid UserUpdateRequest userUpdateRequest, BindingResult bindingResult){
-        if(bindingResult.hasErrors())
+    public TokenResponse updateUser(@Valid UserUpdateRequest userUpdateRequest, BindingResult bindingResult) {
+        if (bindingResult.hasErrors())
             throw new ApiRequestException("Введенные данные неверны");
-        Long userID = jwtUtil.extractAllClaimsFromHeader(jwtToken).get("id", Long.class);
-        String updatedToken = usersService.updateUser(userUpdateRequest, userID);
+        String updatedToken = usersService.updateUser(userUpdateRequest);
         return new TokenResponse(updatedToken);
     }
 
@@ -73,18 +72,23 @@ public class UsersController {
     }
 
     @GetMapping("/get-confirmation-code")
-    public StringResponse getConfirmationCode(String phoneNumber){
+    public StringResponse getConfirmationCode(String phoneNumber) {
         return new StringResponse(confirmationCodeService.setConfirmationCode(phoneNumber));
     }
 
     @GetMapping("/check-confirmation-code")
-    public StringResponse checkConfirmationCode(String phoneNumber, Integer confirmationCode){
-        if(confirmationCodeService.checkConfirmationCode(phoneNumber, confirmationCode)){
+    public StringResponse checkConfirmationCode(String phoneNumber, Integer confirmationCode) {
+        if (confirmationCodeService.checkConfirmationCode(phoneNumber, confirmationCode)) {
             return new StringResponse("Код правильный");
-        }
-        else {
+        } else {
             return new StringResponse("Код неправильный");
         }
+    }
+
+    @GetMapping("/get-user-role")
+    public StringResponse getUserRole(@RequestHeader("Authorization") String jwtToken) {
+        Long userID = jwtUtil.extractAllClaimsFromHeader(jwtToken).get("id", Long.class);
+        return new StringResponse(usersService.getUserRole(userID));
     }
 
 }

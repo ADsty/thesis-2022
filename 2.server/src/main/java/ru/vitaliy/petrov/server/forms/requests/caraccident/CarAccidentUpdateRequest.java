@@ -4,6 +4,8 @@ import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.sql.Date;
+import java.sql.Time;
 
 @Data
 public class CarAccidentUpdateRequest {
@@ -13,18 +15,9 @@ public class CarAccidentUpdateRequest {
     private final String updatedCarAccidentScene;
 
     @NotNull
-    @NotEmpty
-    private final String updatedCarAccidentDate;
+    private final Date updatedCarAccidentDate;
 
     @NotNull
-    @NotEmpty
-    private final String updatedCarAccidentTime;
+    private final Time updatedCarAccidentTime;
 
-    @NotNull
-    @NotEmpty
-    private final Integer updatedCarAccidentParticipantsNumber;
-
-    @NotNull
-    @NotEmpty
-    private final Integer updatedCarAccidentWitnessesNumber;
 }

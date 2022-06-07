@@ -32,7 +32,7 @@ public class UserProfile implements Serializable {
     private String userFullName;
 
     @Column(name = "user_date_of_birth", nullable = false)
-    private String userDateOfBirth;
+    private Date userDateOfBirth;
 
     @Column(name = "user_residential_address", nullable = false)
     private String userResidentialAddress;

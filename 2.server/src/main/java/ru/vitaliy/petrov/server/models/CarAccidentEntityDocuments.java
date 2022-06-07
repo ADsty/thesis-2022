@@ -23,32 +23,32 @@ public class CarAccidentEntityDocuments implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(optional = false)
+    @ManyToOne()
     @JoinColumn(name = "car_accident_entity", referencedColumnName = "car_accident_entity_id", nullable = false)
     private CarAccidentEntity carAccidentEntity;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "administrative_offence_case_protocol", referencedColumnName = "administrative_offence_case_protocol_id", nullable = false)
+    @ManyToOne()
+    @JoinColumn(name = "administrative_offence_case_protocol", referencedColumnName = "administrative_offence_case_protocol_id")
     private AdministrativeOffenceCaseProtocol administrativeOffenceCaseProtocol;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "administrative_offence_case_decision", referencedColumnName = "administrative_offence_case_decision_id", nullable = false)
+    @ManyToOne()
+    @JoinColumn(name = "administrative_offence_case_decision", referencedColumnName = "administrative_offence_case_decision_id")
     private AdministrativeOffenceCaseDecision administrativeOffenceCaseDecision;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "administrative_offence_case_investigation", referencedColumnName = "administrative_offence_case_investigation_id", nullable = false)
+    @ManyToOne()
+    @JoinColumn(name = "administrative_offence_case_investigation", referencedColumnName = "administrative_offence_case_investigation_id")
     private AdministrativeOffenceCaseInvestigation administrativeOffenceCaseInvestigation;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "administrative_offence_case_refusal", referencedColumnName = "administrative_offence_case_refusal_id", nullable = false)
+    @ManyToOne()
+    @JoinColumn(name = "administrative_offence_case_refusal", referencedColumnName = "administrative_offence_case_refusal_id")
     private AdministrativeOffenceCaseRefusal administrativeOffenceCaseRefusal;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "administrative_offence_scene_scheme", referencedColumnName = "administrative_offence_scene_scheme_id", nullable = false)
+    @ManyToOne()
+    @JoinColumn(name = "administrative_offence_scene_scheme", referencedColumnName = "administrative_offence_scene_scheme_id")
     private AdministrativeOffenceSceneScheme administrativeOffenceSceneScheme;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "administrative_offence_scene_inspection", referencedColumnName = "administrative_offence_scene_inspection_id", nullable = false)
+    @ManyToOne()
+    @JoinColumn(name = "administrative_offence_scene_inspection", referencedColumnName = "administrative_offence_scene_inspection_id")
     private AdministrativeOffenceSceneInspection administrativeOffenceSceneInspection;
 
 }

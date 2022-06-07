@@ -6,14 +6,16 @@ import ru.vitaliy.petrov.server.models.Chat;
 import ru.vitaliy.petrov.server.models.Message;
 import ru.vitaliy.petrov.server.models.Users;
 
+import java.sql.Date;
+import java.sql.Time;
 import java.util.List;
 import java.util.Optional;
 
 public interface MessageRepository extends JpaRepository<Message, Long>, JpaSpecificationExecutor<Message> {
 
-    List<Message> findAllBySender(Users sender);
-
     List<Message> findAllByChat(Chat chat);
 
-    Optional<Message> findBySenderAndAddresseeAndMessageCreationDateAndMessageCreationTime(Users sender, Users addressee, String messageCreationDate, String messageCreationTime);
+    Optional<Message> findBySenderAndAddresseeAndMessageCreationDateAndMessageCreationTime(Users sender, Users addressee, Date messageCreationDate, Time messageCreationTime);
+
+    Optional<Message> findTopByChatOrderByIdDesc(Chat chat);
 }

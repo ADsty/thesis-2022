@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.sql.Date;
 
 @Data
 public class DriverLicenseCreationRequest {
@@ -17,6 +18,5 @@ public class DriverLicenseCreationRequest {
     private final String driverLicenseCategory;
 
     @NotNull
-    @NotEmpty
-    private final String driverLicenseDateOfIssue;
+    private final Date driverLicenseDateOfIssue;
 }

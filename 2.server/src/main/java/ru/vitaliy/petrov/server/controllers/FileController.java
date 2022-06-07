@@ -9,7 +9,6 @@ import ru.vitaliy.petrov.server.forms.responses.StringResponse;
 import ru.vitaliy.petrov.server.security.JwtUtil;
 
 import java.io.BufferedOutputStream;
-import java.io.File;
 import java.io.FileOutputStream;
 
 @Controller
@@ -19,28 +18,30 @@ public class FileController {
     private JwtUtil jwtUtil;
 
     @PostMapping("/upload")
-    public @ResponseBody StringResponse handleFileUpload(@RequestParam("name") String name,
-                                    @RequestParam("file")MultipartFile file,
-                                    @RequestHeader("Authorization") String jwtToken){
+    public @ResponseBody
+    StringResponse handleFileUpload(@RequestParam("name") String name,
+                                    @RequestParam("file") MultipartFile file,
+                                    @RequestHeader("Authorization") String jwtToken) {
         Long userID = jwtUtil.extractAllClaimsFromHeader(jwtToken).get("id", Long.class);
-        if(!file.isEmpty()) {
+        if (!file.isEmpty()) {
             try {
                 byte[] bytes = file.getBytes();
-                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File("D:/speedup-of-registration-server-2022/src/main/java/ru/vitaliy/petrov/server/uploaded/" + userID + name)));
+                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream("D:/speedup-of-registration-server-2022/src/main/java/ru/vitaliy/petrov/server/uploaded/" + userID + name));
                 stream.write(bytes);
                 stream.close();
                 return new StringResponse("Вы успешно загрузили файл");
             } catch (Exception e) {
                 return new StringResponse("Вам не удалось загрузить файл из-за ошибки");
             }
-        }
-        else {
+        } else {
             return new StringResponse("Вам не удалось загрузить файл");
         }
     }
 
     @GetMapping("/download")
-    public @ResponseBody FileSystemResource handleFileDownload(String fileName) {
-        return new FileSystemResource("D:/speedup-of-registration-server-2022/src/main/java/ru/vitaliy/petrov/server/uploaded/" + fileName);
+    public @ResponseBody
+    FileSystemResource handleFileDownload(@RequestHeader("Authorization") String jwtToken, String fileName) {
+        Long userID = jwtUtil.extractAllClaimsFromHeader(jwtToken).get("id", Long.class);
+        return new FileSystemResource("D:/speedup-of-registration-server-2022/src/main/java/ru/vitaliy/petrov/server/uploaded/" + userID + fileName);
     }
 }

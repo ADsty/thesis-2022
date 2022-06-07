@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.sql.Date;
 
 @Data
 public class VehicleInsurancePolicyCreationRequest {
@@ -17,6 +18,5 @@ public class VehicleInsurancePolicyCreationRequest {
     private final String vehicleInsurancePolicyNumber;
 
     @NotNull
-    @NotEmpty
-    private final String vehicleInsurancePolicyExpirationDate;
+    private final Date vehicleInsurancePolicyExpirationDate;
 }

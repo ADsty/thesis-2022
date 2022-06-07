@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Date;
+import java.sql.Time;
 
 @Data
 @AllArgsConstructor
@@ -24,10 +26,10 @@ public class AdministrativeOffenceCaseInvestigation implements Serializable {
     private Long id;
 
     @Column(name = "date_of_fill", nullable = false)
-    private String dateOfFill;
+    private Date dateOfFill;
 
     @Column(name = "time_of_fill", nullable = false)
-    private String timeOfFill;
+    private Time timeOfFill;
 
     @Column(name = "place_of_fill", nullable = false)
     private String placeOfFill;

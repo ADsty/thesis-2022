@@ -4,55 +4,38 @@ import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.sql.Date;
+import java.sql.Time;
 
 @Data
 public class AdministrativeOffenceSceneInspectionUpdateRequest {
 
     @NotNull
-    @NotEmpty
-    private final String updatedDateOfFill;
+    private final Long documentID;
 
     @NotNull
-    @NotEmpty
-    private final String updatedTimeOfFill;
+    private final Date updatedDateOfFill;
+
+    @NotNull
+    private final Time updatedTimeOfFill;
 
     @NotNull
     @NotEmpty
     private final String updatedPlaceOfFill;
 
     @NotNull
-    @NotEmpty
     private final Boolean updatedCameraUsage;
 
     @NotNull
-    @NotEmpty
-    private final String updatedFirstWitnessFullName;
+    private final Long updatedFirstWitnessID;
 
     @NotNull
-    @NotEmpty
-    private final String updatedFirstWitnessResidentialAddress;
-
-    @NotNull
-    @NotEmpty
-    private final String updatedFirstWitnessPhoneNumber;
-
-    @NotNull
-    @NotEmpty
-    private final String updatedSecondWitnessFullName;
-
-    @NotNull
-    @NotEmpty
-    private final String updatedSecondWitnessResidentialAddress;
-
-    @NotNull
-    @NotEmpty
-    private final String updatedSecondWitnessPhoneNumber;
+    private final Long updatedSecondWitnessID;
 
     @NotNull
     @NotEmpty
     private final String updatedSceneInspectionInfo;
 
     @NotNull
-    @NotEmpty
-    private final Long entityDocumentsID;
+    private final Long carAccidentEntityID;
 }

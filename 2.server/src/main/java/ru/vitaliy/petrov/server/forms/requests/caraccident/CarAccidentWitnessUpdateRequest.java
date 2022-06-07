@@ -21,6 +21,5 @@ public class CarAccidentWitnessUpdateRequest {
     private final String updatedWitnessPhoneNumber;
 
     @NotNull
-    @NotEmpty
     private final Long witnessID;
 }

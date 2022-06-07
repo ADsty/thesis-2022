@@ -3,6 +3,7 @@ package ru.vitaliy.petrov.server.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.vitaliy.petrov.server.error.ApiRequestException;
+import ru.vitaliy.petrov.server.error.ForbiddenApiException;
 import ru.vitaliy.petrov.server.error.InternalApiException;
 import ru.vitaliy.petrov.server.forms.requests.userprofile.VehicleInsurancePolicyCreationRequest;
 import ru.vitaliy.petrov.server.forms.requests.userprofile.VehicleInsurancePolicyUpdateRequest;
@@ -12,6 +13,7 @@ import ru.vitaliy.petrov.server.models.VehicleInsurancePolicy;
 import ru.vitaliy.petrov.server.repositories.UsersRepository;
 import ru.vitaliy.petrov.server.repositories.VehicleInsurancePolicyRepository;
 
+import java.sql.Date;
 import java.util.Optional;
 
 @Service
@@ -34,7 +36,7 @@ public class VehicleInsurancePolicyService implements IVehicleInsurancePolicySer
         final Users user = userCandidate.get();
         final String vehicleInsuranceCompany = vehicleInsurancePolicyCreationRequest.getVehicleInsuranceCompany();
         final String vehicleInsurancePolicyNumber = vehicleInsurancePolicyCreationRequest.getVehicleInsurancePolicyNumber();
-        final String vehicleInsurancePolicyExpirationDate = vehicleInsurancePolicyCreationRequest.getVehicleInsurancePolicyExpirationDate();
+        final Date vehicleInsurancePolicyExpirationDate = vehicleInsurancePolicyCreationRequest.getVehicleInsurancePolicyExpirationDate();
 
 
         VehicleInsurancePolicy vehicleInsurancePolicy = VehicleInsurancePolicy
@@ -57,25 +59,33 @@ public class VehicleInsurancePolicyService implements IVehicleInsurancePolicySer
     }
 
     @Override
-    public VehicleInsurancePolicy getVehicleInsurancePolicy(Long policyID) {
+    public VehicleInsurancePolicy getVehicleInsurancePolicy(Long policyID, Long userID) {
         Optional<VehicleInsurancePolicy> vehicleInsurancePolicyCandidate = vehicleInsurancePolicyRepository.findById(policyID);
         if (vehicleInsurancePolicyCandidate.isEmpty()) {
             throw new ApiRequestException("Страховка не найдена");
+        }
+        if (!vehicleInsurancePolicyCandidate.get().getVehicleInsurancePolicyUser().getId().equals(userID)) {
+            throw new ForbiddenApiException("У вас нет доступа к данной страховке");
         }
         return vehicleInsurancePolicyCandidate.get();
     }
 
     @Override
-    public String updateVehicleInsurancePolicy(VehicleInsurancePolicyUpdateRequest vehicleInsurancePolicyUpdateRequest, Long policyID) {
+    public String updateVehicleInsurancePolicy(VehicleInsurancePolicyUpdateRequest vehicleInsurancePolicyUpdateRequest, Long policyID, Long userID) {
 
         final String updatedVehicleInsuranceCompany = vehicleInsurancePolicyUpdateRequest.getUpdatedVehicleInsuranceCompany();
         final String updatedVehicleInsurancePolicyNumber = vehicleInsurancePolicyUpdateRequest.getUpdatedVehicleInsurancePolicyNumber();
-        final String updatedVehicleInsurancePolicyExpirationDate = vehicleInsurancePolicyUpdateRequest.getUpdatedVehicleInsurancePolicyExpirationDate();
+        final Date updatedVehicleInsurancePolicyExpirationDate = vehicleInsurancePolicyUpdateRequest.getUpdatedVehicleInsurancePolicyExpirationDate();
 
         Optional<VehicleInsurancePolicy> vehicleInsurancePolicyCandidate = vehicleInsurancePolicyRepository.findById(policyID);
         if (vehicleInsurancePolicyCandidate.isEmpty()) {
             throw new ApiRequestException("Страховка не найдена");
         }
+
+        if (!vehicleInsurancePolicyCandidate.get().getVehicleInsurancePolicyUser().getId().equals(userID)) {
+            throw new ForbiddenApiException("У вас нет доступа к данной страховке");
+        }
+
         VehicleInsurancePolicy vehicleInsurancePolicy = vehicleInsurancePolicyCandidate.get();
 
         vehicleInsurancePolicy.setVehicleInsuranceCompany(updatedVehicleInsuranceCompany);
@@ -83,15 +93,20 @@ public class VehicleInsurancePolicyService implements IVehicleInsurancePolicySer
         vehicleInsurancePolicy.setVehicleInsurancePolicyExpirationDate(updatedVehicleInsurancePolicyExpirationDate);
 
         vehicleInsurancePolicyRepository.save(vehicleInsurancePolicy);
-        return "Пользователь был изменен";
+        return "Страховка была изменена";
     }
 
     @Override
-    public String deleteVehicleInsurancePolicy(Long policyID) {
+    public String deleteVehicleInsurancePolicy(Long policyID, Long userID) {
         Optional<VehicleInsurancePolicy> vehicleInsurancePolicyCandidate = vehicleInsurancePolicyRepository.findById(policyID);
         if (vehicleInsurancePolicyCandidate.isEmpty()) {
             throw new ApiRequestException("Страховка не найдена");
         }
+
+        if (!vehicleInsurancePolicyCandidate.get().getVehicleInsurancePolicyUser().getId().equals(userID)) {
+            throw new ForbiddenApiException("У вас нет доступа к данной страховке");
+        }
+
         vehicleInsurancePolicyRepository.delete(vehicleInsurancePolicyCandidate.get());
         return "Страховка была удалена";
     }

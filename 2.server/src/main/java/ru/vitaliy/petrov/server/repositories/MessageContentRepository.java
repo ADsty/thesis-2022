@@ -7,7 +7,7 @@ import ru.vitaliy.petrov.server.models.MessageContent;
 
 import java.util.Optional;
 
-public interface MessageContentRepository extends JpaRepository<MessageContent, Long>, JpaSpecificationExecutor<MessageContent>  {
+public interface MessageContentRepository extends JpaRepository<MessageContent, Long>, JpaSpecificationExecutor<MessageContent> {
 
     Optional<MessageContent> findByMessage(Message message);
 }

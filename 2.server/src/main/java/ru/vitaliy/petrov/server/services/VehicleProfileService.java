@@ -3,6 +3,7 @@ package ru.vitaliy.petrov.server.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.vitaliy.petrov.server.error.ApiRequestException;
+import ru.vitaliy.petrov.server.error.ForbiddenApiException;
 import ru.vitaliy.petrov.server.error.InternalApiException;
 import ru.vitaliy.petrov.server.forms.requests.userprofile.VehicleProfileCreationRequest;
 import ru.vitaliy.petrov.server.forms.requests.userprofile.VehicleProfileUpdateRequest;
@@ -83,17 +84,6 @@ public class VehicleProfileService implements IVehicleProfileService {
     }
 
     @Override
-    public VehicleProfile getVehicleProfile(Long vehicleID) {
-        Optional<VehicleProfile> vehicleProfileCandidate = vehicleProfileRepository.findById(vehicleID);
-
-        if (vehicleProfileCandidate.isEmpty()) {
-            throw new ApiRequestException("Такого профиля машины не существует");
-        }
-
-        return vehicleProfileCandidate.get();
-    }
-
-    @Override
     public List<VehicleProfile> getAllVehicleProfiles(Long userID) {
         Optional<Users> userCandidate = usersRepository.findById(userID);
 
@@ -113,7 +103,7 @@ public class VehicleProfileService implements IVehicleProfileService {
     }
 
     @Override
-    public String updateVehicleProfile(VehicleProfileUpdateRequest vehicleProfileUpdateRequest, Long vehicleID) {
+    public String updateVehicleProfile(VehicleProfileUpdateRequest vehicleProfileUpdateRequest, Long vehicleID, Long userID) {
 
         final String updatedVehicleBrand = vehicleProfileUpdateRequest.getUpdatedVehicleBrand();
         final String updatedVehicleVIN = vehicleProfileUpdateRequest.getUpdatedVehicleVIN();
@@ -137,6 +127,10 @@ public class VehicleProfileService implements IVehicleProfileService {
             throw new ApiRequestException("Профиль машины не найден");
         }
 
+        if (!vehicleProfileCandidate.get().getVehicleProfileUser().getId().equals(userID)) {
+            throw new ForbiddenApiException("У вас нет доступа к данному профилю машины");
+        }
+
         VehicleProfile vehicleProfile = vehicleProfileCandidate.get();
 
         vehicleProfile.setVehicleBrand(updatedVehicleBrand);
@@ -153,11 +147,15 @@ public class VehicleProfileService implements IVehicleProfileService {
     }
 
     @Override
-    public String deleteVehicleProfile(Long vehicleID) {
+    public String deleteVehicleProfile(Long vehicleID, Long userID) {
         Optional<VehicleProfile> vehicleProfileCandidate = vehicleProfileRepository.findById(vehicleID);
 
         if (vehicleProfileCandidate.isEmpty()) {
             throw new ApiRequestException("Такого профиля машины не существует");
+        }
+
+        if (!vehicleProfileCandidate.get().getVehicleProfileUser().getId().equals(userID)) {
+            throw new ForbiddenApiException("У вас нет доступа к данному профилю машины");
         }
 
         VehicleProfile vehicleProfile = vehicleProfileCandidate.get();

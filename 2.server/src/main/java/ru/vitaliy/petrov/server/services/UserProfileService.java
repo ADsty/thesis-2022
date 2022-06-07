@@ -14,6 +14,7 @@ import ru.vitaliy.petrov.server.repositories.DriverLicenseRepository;
 import ru.vitaliy.petrov.server.repositories.UserProfileRepository;
 import ru.vitaliy.petrov.server.repositories.UsersRepository;
 
+import java.sql.Date;
 import java.util.Optional;
 
 @Service
@@ -38,7 +39,7 @@ public class UserProfileService implements IUserProfileService {
 
         final Users user = userCandidate.get();
         final String fullName = userProfileCreationRequest.getFullName();
-        final String dateOfBirth = userProfileCreationRequest.getDateOfBirth();
+        final Date dateOfBirth = userProfileCreationRequest.getDateOfBirth();
         final String residentialAddress = userProfileCreationRequest.getResidentialAddress();
         final String placeOfWork = userProfileCreationRequest.getPlaceOfWork();
         final String positionAtWork = userProfileCreationRequest.getPositionAtWork();
@@ -85,7 +86,7 @@ public class UserProfileService implements IUserProfileService {
     public String updateUserProfile(UserProfileUpdateRequest userProfileUpdateRequest, Long userID) {
 
         final String updatedFullName = userProfileUpdateRequest.getUpdatedFullName();
-        final String updatedDateOfBirth = userProfileUpdateRequest.getUpdatedDateOfBirth();
+        final Date updatedDateOfBirth = userProfileUpdateRequest.getUpdatedDateOfBirth();
         final String updatedResidentialAddress = userProfileUpdateRequest.getUpdatedResidentialAddress();
         final String updatedPlaceOfWork = userProfileUpdateRequest.getUpdatedPlaceOfWork();
         final String updatedPositionAtWork = userProfileUpdateRequest.getUpdatedPositionAtWork();

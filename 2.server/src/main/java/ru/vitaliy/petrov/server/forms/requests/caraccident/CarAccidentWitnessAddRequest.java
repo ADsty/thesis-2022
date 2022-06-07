@@ -9,7 +9,6 @@ import javax.validation.constraints.NotNull;
 public class CarAccidentWitnessAddRequest {
 
     @NotNull
-    @NotEmpty
     private final Long entityID;
 
     @NotNull

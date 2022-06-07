@@ -4,31 +4,25 @@ import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.sql.Date;
+import java.sql.Time;
 
 @Data
 public class MessageCreationRequest {
 
     @NotNull
-    @NotEmpty
     private final Long addressee;
 
     @NotNull
-    @NotEmpty
-    private final String messageCreationDate;
+    private final Date messageCreationDate;
 
     @NotNull
-    @NotEmpty
-    private final String messageCreationTime;
+    private final Time messageCreationTime;
 
     @NotNull
     @NotEmpty
     private final String messageText;
 
     @NotNull
-    @NotEmpty
     private final Long chatID;
-
-    @NotNull
-    @NotEmpty
-    private final String fileName;
 }

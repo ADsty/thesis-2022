@@ -9,10 +9,12 @@ import javax.validation.constraints.NotNull;
 public class CarAccidentParticipantAddRequest {
 
     @NotNull
-    @NotEmpty
     private final Long entityID;
 
     @NotNull
     @NotEmpty
     private final Long participantID;
+
+    @NotNull
+    private final Long vehicleID;
 }

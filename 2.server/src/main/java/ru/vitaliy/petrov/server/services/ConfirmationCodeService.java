@@ -31,6 +31,6 @@ public class ConfirmationCodeService {
     }
 
     public String sendConfirmationCode(String phoneNumber, Integer confirmationCode) {
-        return "Код" + confirmationCode + "был отправлен на номер" + phoneNumber;
+        return "Код " + confirmationCode + " был отправлен на номер " + phoneNumber;
     }
 }

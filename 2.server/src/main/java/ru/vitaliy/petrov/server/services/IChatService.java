@@ -12,9 +12,9 @@ public interface IChatService {
 
     List<Chat> getAllChatsOfUser(Long userID);
 
-    List<Message> getAllMessagesOfChat(Long chatID);
+    List<Message> getAllMessagesOfChat(Long chatID, Long userID);
 
     CreationResponse sendMessage(MessageCreationRequest messageCreationRequest, Long userID);
 
-    String updateMessage(MessageUpdateRequest messageUpdateRequest);
+    String updateMessage(MessageUpdateRequest messageUpdateRequest, Long userID);
 }

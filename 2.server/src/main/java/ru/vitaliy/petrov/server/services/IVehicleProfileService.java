@@ -11,12 +11,10 @@ public interface IVehicleProfileService {
 
     CreationResponse createNewVehicleProfile(VehicleProfileCreationRequest vehicleProfileCreationRequest, Long userID);
 
-    VehicleProfile getVehicleProfile(Long vehicleID);
-
     List<VehicleProfile> getAllVehicleProfiles(Long userID);
 
-    String updateVehicleProfile(VehicleProfileUpdateRequest vehicleProfileUpdateRequest, Long vehicleID);
+    String updateVehicleProfile(VehicleProfileUpdateRequest vehicleProfileUpdateRequest, Long vehicleID, Long userID);
 
-    String deleteVehicleProfile(Long vehicleID);
+    String deleteVehicleProfile(Long vehicleID, Long userID);
 
 }

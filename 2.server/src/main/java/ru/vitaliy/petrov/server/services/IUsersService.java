@@ -9,7 +9,7 @@ public interface IUsersService {
 
     String login(UserLoginRequest userLoginRequest);
 
-    String updateUser(UserUpdateRequest userUpdateRequest, Long userID);
+    String updateUser(UserUpdateRequest userUpdateRequest);
 
     String deleteUser(Long userID);
 }

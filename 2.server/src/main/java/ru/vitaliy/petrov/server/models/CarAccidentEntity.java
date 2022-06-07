@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -31,8 +32,8 @@ public class CarAccidentEntity implements Serializable {
     @JoinColumn(name = "car_accident", referencedColumnName = "car_accident_id", nullable = false)
     private CarAccident carAccident;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "traffic_police_officer", referencedColumnName = "user_id", nullable = false)
+    @ManyToOne()
+    @JoinColumn(name = "traffic_police_officer", referencedColumnName = "user_id")
     private Users trafficPoliceOfficer;
 
 }

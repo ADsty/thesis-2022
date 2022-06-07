@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.sql.Date;
 
 @Data
 public class UserProfileUpdateRequest {
@@ -13,8 +14,7 @@ public class UserProfileUpdateRequest {
     private final String updatedFullName;
 
     @NotNull
-    @NotEmpty
-    private final String updatedDateOfBirth;
+    private final Date updatedDateOfBirth;
 
     @NotNull
     @NotEmpty

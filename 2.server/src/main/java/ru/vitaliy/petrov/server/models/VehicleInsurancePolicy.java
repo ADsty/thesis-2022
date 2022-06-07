@@ -35,6 +35,6 @@ public class VehicleInsurancePolicy implements Serializable {
     private String vehicleInsurancePolicyNumber;
 
     @Column(name = "vehicle_insurance_policy_expiration_date")
-    private String vehicleInsurancePolicyExpirationDate;
+    private Date vehicleInsurancePolicyExpirationDate;
 
 }

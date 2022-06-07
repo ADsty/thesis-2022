@@ -32,6 +32,6 @@ public class DriverLicense implements Serializable {
     private DriverLicenseCategory driverLicenseCategory;
 
     @Column(name = "driver_license_date_of_issue")
-    private String driverLicenseDateOfIssue;
+    private Date driverLicenseDateOfIssue;
 
 }

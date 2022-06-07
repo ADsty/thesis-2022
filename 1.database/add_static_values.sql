@@ -29,4 +29,13 @@ INSERT INTO user_state VALUES ('3', 'В работе');
 INSERT INTO user_state VALUES ('4', 'На отдыхе');
 
 
+INSERT INTO change_label VALUES ('1', 'Общий');
+INSERT INTO change_label VALUES ('2', 'Служебный');
+
+
+INSERT INTO interviewed_person_type VALUES ('1', 'Подозреваемый');
+INSERT INTO interviewed_person_type VALUES ('2', 'Потерпевший');
+INSERT INTO interviewed_person_type VALUES ('3', 'Свидетель');
+
+
 COMMIT;

@@ -4,27 +4,22 @@ import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.sql.Date;
+import java.sql.Time;
 
 @Data
 public class MessageUpdateRequest {
 
     @NotNull
-    @NotEmpty
-    private final String messageUpdateDate;
+    private final Date messageUpdateDate;
 
     @NotNull
-    @NotEmpty
-    private final String messageUpdateTime;
+    private final Time messageUpdateTime;
 
     @NotNull
     @NotEmpty
     private final String updatedMessageText;
 
     @NotNull
-    @NotEmpty
-    private final String fileName;
-
-    @NotNull
-    @NotEmpty
     private final Long messageID;
 }

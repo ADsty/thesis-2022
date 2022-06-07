@@ -16,10 +16,11 @@ import ru.vitaliy.petrov.server.repositories.DriverLicenseRepository;
 import ru.vitaliy.petrov.server.repositories.UserProfileRepository;
 import ru.vitaliy.petrov.server.repositories.UsersRepository;
 
+import java.sql.Date;
 import java.util.Optional;
 
 @Service
-public class DriverLicenseService implements IDriverLicenseService{
+public class DriverLicenseService implements IDriverLicenseService {
 
     @Autowired
     private DriverLicenseRepository driverLicenseRepository;
@@ -34,15 +35,20 @@ public class DriverLicenseService implements IDriverLicenseService{
     private DriverLicenseCategoryRepository driverLicenseCategoryRepository;
 
     @Override
-    public CreationResponse createNewDriverLicense(DriverLicenseCreationRequest driverLicenseCreationRequest) {
+    public CreationResponse createNewDriverLicense(DriverLicenseCreationRequest driverLicenseCreationRequest, Long userID) {
+
+        Optional<Users> userCandidate = usersRepository.findById(userID);
+        if (userCandidate.isEmpty()) {
+            throw new ApiRequestException("Пользователь, создавший запрос, не был найден");
+        }
 
         final String driverLicenseNumber = driverLicenseCreationRequest.getDriverLicenseNumber();
         final String driverLicenseCategory = driverLicenseCreationRequest.getDriverLicenseCategory();
-        final String driverLicenseDateOfIssue = driverLicenseCreationRequest.getDriverLicenseDateOfIssue();
+        final Date driverLicenseDateOfIssue = driverLicenseCreationRequest.getDriverLicenseDateOfIssue();
 
         Optional<DriverLicenseCategory> driverLicenseCategoryCandidate = driverLicenseCategoryRepository.findByDriverLicenseCategory(driverLicenseCategory);
 
-        if(driverLicenseCategoryCandidate.isEmpty()) {
+        if (driverLicenseCategoryCandidate.isEmpty()) {
             throw new ApiRequestException("Введенные данные неверны");
         }
 
@@ -59,7 +65,7 @@ public class DriverLicenseService implements IDriverLicenseService{
 
         Optional<DriverLicense> createdDriverLicense = driverLicenseRepository.findByDriverLicenseNumber(driverLicenseNumber);
 
-        if(createdDriverLicense.isEmpty()) {
+        if (createdDriverLicense.isEmpty()) {
             throw new InternalApiException("Не удалось добавить водительские права");
         }
 
@@ -76,11 +82,11 @@ public class DriverLicenseService implements IDriverLicenseService{
 
         final String updatedDriverLicenseNumber = driverLicenseUpdateRequest.getUpdatedDriverLicenseNumber();
         final String updatedDriverLicenseCategory = driverLicenseUpdateRequest.getUpdatedDriverLicenseCategory();
-        final String updatedDriverLicenseDateOfIssue = driverLicenseUpdateRequest.getUpdatedDriverLicenseDateOfIssue();
+        final Date updatedDriverLicenseDateOfIssue = driverLicenseUpdateRequest.getUpdatedDriverLicenseDateOfIssue();
 
         Optional<DriverLicenseCategory> driverLicenseCategoryCandidate = driverLicenseCategoryRepository.findByDriverLicenseCategory(updatedDriverLicenseCategory);
 
-        if(driverLicenseCategoryCandidate.isEmpty()) {
+        if (driverLicenseCategoryCandidate.isEmpty()) {
             throw new ApiRequestException("Введенные данные неверны");
         }
 
@@ -113,7 +119,7 @@ public class DriverLicenseService implements IDriverLicenseService{
 
         Optional<UserProfile> userProfileCandidate = userProfileRepository.findByUser(user);
 
-        if(userProfileCandidate.isEmpty()) {
+        if (userProfileCandidate.isEmpty()) {
             throw new ApiRequestException("Профиль пользователя не был найден");
         }
 

@@ -8,9 +8,9 @@ import ru.vitaliy.petrov.server.models.VehicleInsurancePolicy;
 public interface IVehicleInsurancePolicyService {
     CreationResponse createNewVehicleInsurancePolicy(VehicleInsurancePolicyCreationRequest vehicleInsurancePolicyCreationRequest, Long userID);
 
-    VehicleInsurancePolicy getVehicleInsurancePolicy(Long policyID);
+    VehicleInsurancePolicy getVehicleInsurancePolicy(Long policyID, Long userID);
 
-    String updateVehicleInsurancePolicy(VehicleInsurancePolicyUpdateRequest vehicleInsurancePolicyUpdateRequest, Long policyID);
+    String updateVehicleInsurancePolicy(VehicleInsurancePolicyUpdateRequest vehicleInsurancePolicyUpdateRequest, Long policyID, Long userID);
 
-    String deleteVehicleInsurancePolicy(Long policyID);
+    String deleteVehicleInsurancePolicy(Long policyID, Long userID);
 }

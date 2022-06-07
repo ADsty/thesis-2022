@@ -4,59 +4,39 @@ import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.sql.Date;
+import java.sql.Time;
 
 @Data
 public class AdministrativeOffenceSceneSchemeAddRequest {
 
     @NotNull
-    @NotEmpty
-    private final String dateOfFill;
+    private final Date dateOfFill;
 
     @NotNull
-    @NotEmpty
-    private final String timeOfFill;
+    private final Time timeOfFill;
 
     @NotNull
     @NotEmpty
     private final String placeOfFill;
 
     @NotNull
-    @NotEmpty
     private final Long policeOfficerID;
 
     @NotNull
     @NotEmpty
-    private final Boolean isFileLinked;
+    private final String fileLink;
 
     @NotNull
     @NotEmpty
     private final String schemeConventions;
 
     @NotNull
-    @NotEmpty
-    private final String firstWitnessFullName;
+    private final Long firstWitnessID;
 
     @NotNull
-    @NotEmpty
-    private final String firstWitnessResidentialAddress;
+    private final Long secondWitnessID;
 
     @NotNull
-    @NotEmpty
-    private final String firstWitnessPhoneNumber;
-
-    @NotNull
-    @NotEmpty
-    private final String secondWitnessFullName;
-
-    @NotNull
-    @NotEmpty
-    private final String secondWitnessResidentialAddress;
-
-    @NotNull
-    @NotEmpty
-    private final String secondWitnessPhoneNumber;
-
-    @NotNull
-    @NotEmpty
-    private final Long entityDocumentsID;
+    private final Long carAccidentEntityID;
 }

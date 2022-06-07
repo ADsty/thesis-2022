@@ -7,7 +7,7 @@ import ru.vitaliy.petrov.server.models.DriverLicense;
 
 public interface IDriverLicenseService {
 
-    CreationResponse createNewDriverLicense(DriverLicenseCreationRequest driverLicenseCreationRequest);
+    CreationResponse createNewDriverLicense(DriverLicenseCreationRequest driverLicenseCreationRequest, Long userID);
 
     DriverLicense getDriverLicense(Long userID);
 
