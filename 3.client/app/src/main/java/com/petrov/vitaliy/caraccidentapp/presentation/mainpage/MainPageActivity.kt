@@ -10,4 +10,10 @@ class MainPageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_page_activity)
     }
+
+    override fun onBackPressed() {
+        setResult(1)
+        finish()
+    }
+
 }

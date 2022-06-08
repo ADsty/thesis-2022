@@ -19,10 +19,4 @@
         android:title="@string/profile_icon_title"
         />
 
-    <item
-        android:id="@+id/map"
-        android:icon="@drawable/ic_map"
-        android:title="@string/map_icon_title"
-        />
-
 </menu>

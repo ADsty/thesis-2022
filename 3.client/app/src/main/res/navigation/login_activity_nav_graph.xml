@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.petrov.vitaliy.caraccidentapp.presentation.login.LoginFragment"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.login.fragment.LoginFragment"
         android:label="LoginFragment" >
         <action
             android:id="@+id/action_loginFragment_to_wrongLoginFragment"
@@ -20,18 +20,15 @@
     </fragment>
     <fragment
         android:id="@+id/loginRecoveryFragment"
-        android:name="com.petrov.vitaliy.caraccidentapp.presentation.login.LoginRecoveryFragment"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.login.fragment.LoginRecoveryFragment"
         android:label="LoginRecoveryFragment" >
         <action
             android:id="@+id/action_loginRecoveryFragment_to_loginRecoveryCodeConfirmationFragment"
             app:destination="@id/loginRecoveryCodeConfirmationFragment" />
-        <action
-            android:id="@+id/action_loginRecoveryFragment_to_mainPageActivity"
-            app:destination="@id/mainPageActivity" />
     </fragment>
     <fragment
         android:id="@+id/wrongLoginFragment"
-        android:name="com.petrov.vitaliy.caraccidentapp.presentation.login.WrongLoginFragment"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.login.fragment.WrongLoginFragment"
         android:label="WrongLoginFragment" >
         <action
             android:id="@+id/action_wrongLoginFragment_to_loginRecoveryFragment"
@@ -43,7 +40,7 @@
         android:label="MainPageActivity" />
     <fragment
         android:id="@+id/registerPhoneNumberInputFragment"
-        android:name="com.petrov.vitaliy.caraccidentapp.presentation.registration.RegisterPhoneNumberInputFragment"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.registration.fragment.RegisterPhoneNumberInputFragment"
         android:label="RegisterPhoneNumberInputFragment" >
         <action
             android:id="@+id/action_registerPhoneNumberInputFragment_to_registerCodeConfirmationFragment"
@@ -51,81 +48,105 @@
     </fragment>
     <fragment
         android:id="@+id/registerCodeConfirmationFragment"
-        android:name="com.petrov.vitaliy.caraccidentapp.presentation.registration.RegisterCodeConfirmationFragment"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.registration.fragment.RegisterCodeConfirmationFragment"
         android:label="RegisterCodeConfirmationFragment" >
-        <action
-            android:id="@+id/action_registerCodeConfirmationFragment_to_registerGeneralInfoFragment"
-            app:destination="@id/registerGeneralInfoFragment" />
         <action
             android:id="@+id/action_registerCodeConfirmationFragment_to_registerPhoneNumberConfirmationFragment"
             app:destination="@id/registerPhoneNumberConfirmationFragment" />
+        <action
+            android:id="@+id/action_registerCodeConfirmationFragment_to_registerPasswordFragment"
+            app:destination="@id/registerPasswordFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerGeneralInfoFragment"
-        android:name="com.petrov.vitaliy.caraccidentapp.presentation.registration.RegisterGeneralInfoFragment"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.registration.fragment.RegisterGeneralInfoFragment"
         android:label="RegisterGeneralInfoFragment" >
         <action
-            android:id="@+id/action_registerGeneralInfoFragment_to_registerDriverLicenseFragment"
-            app:destination="@id/registerDriverLicenseFragment" />
+            android:id="@+id/action_registerGeneralInfoFragment_to_registerVehicleInfoChoiceFragment"
+            app:destination="@id/registerVehicleInfoChoiceFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginRecoveryCodeConfirmationFragment"
-        android:name="com.petrov.vitaliy.caraccidentapp.presentation.login.LoginRecoveryCodeConfirmationFragment"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.login.fragment.LoginRecoveryCodeConfirmationFragment"
         android:label="LoginRecoveryCodeConfirmationFragment" >
         <action
-            android:id="@+id/action_loginRecoveryCodeConfirmationFragment_to_registerPhoneNumberConfirmationFragment"
-            app:destination="@id/registerPhoneNumberConfirmationFragment" />
+            android:id="@+id/action_loginRecoveryCodeConfirmationFragment_to_loginUpdatePasswordFragment"
+            app:destination="@id/loginUpdatePasswordFragment" />
         <action
-            android:id="@+id/action_loginRecoveryCodeConfirmationFragment_to_mainPageActivity"
-            app:destination="@id/mainPageActivity" />
+            android:id="@+id/action_loginRecoveryCodeConfirmationFragment_to_loginPhoneConfirmationFragment"
+            app:destination="@id/loginPhoneConfirmationFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerPhoneNumberConfirmationFragment"
-        android:name="com.petrov.vitaliy.caraccidentapp.presentation.registration.RegisterPhoneNumberConfirmationFragment"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.registration.fragment.RegisterPhoneNumberConfirmationFragment"
         android:label="RegisterPhoneNumberConfirmationFragment" >
         <action
             android:id="@+id/action_registerPhoneNumberConfirmationFragment_to_registerPhoneNumberInputFragment"
             app:destination="@id/registerPhoneNumberInputFragment" />
         <action
-            android:id="@+id/action_registerPhoneNumberConfirmationFragment_to_registerCodeConfirmationFragment3"
+            android:id="@+id/action_registerPhoneNumberConfirmationFragment_to_registerCodeConfirmationFragment"
             app:destination="@id/registerCodeConfirmationFragment" />
-        <action
-            android:id="@+id/action_registerPhoneNumberConfirmationFragment_to_loginRecoveryCodeConfirmationFragment3"
-            app:destination="@id/loginRecoveryCodeConfirmationFragment" />
-        <action
-            android:id="@+id/action_registerPhoneNumberConfirmationFragment_to_loginRecoveryFragment4"
-            app:destination="@id/loginRecoveryFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerDriverLicenseFragment"
-        android:name="com.petrov.vitaliy.caraccidentapp.presentation.registration.RegisterDriverLicenseFragment"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.registration.fragment.RegisterDriverLicenseFragment"
         android:label="RegisterDriverLicenseFragment" >
         <action
-            android:id="@+id/action_registerDriverLicenseFragment_to_registerVehicleInfoChoiceFragment2"
-            app:destination="@id/registerVehicleInfoChoiceFragment2" />
+            android:id="@+id/action_registerDriverLicenseFragment_to_registerGeneralInfoFragment"
+            app:destination="@id/registerGeneralInfoFragment" />
     </fragment>
     <fragment
-        android:id="@+id/registerVehicleInfoChoiceFragment2"
-        android:name="com.petrov.vitaliy.caraccidentapp.presentation.registration.RegisterVehicleInfoChoiceFragment"
+        android:id="@+id/registerVehicleInfoChoiceFragment"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.registration.fragment.RegisterVehicleInfoChoiceFragment"
         android:label="RegisterVehicleInfoChoiceFragment" >
         <action
-            android:id="@+id/action_registerVehicleInfoChoiceFragment2_to_registerVehicleInfoFragment"
-            app:destination="@id/registerVehicleInfoFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/registerVehicleInfoFragment"
-        android:name="com.petrov.vitaliy.caraccidentapp.presentation.registration.RegisterVehicleInfoFragment"
-        android:label="RegisterVehicleInfoFragment" >
+            android:id="@+id/action_registerVehicleInfoChoiceFragment_to_mainPageActivity"
+            app:destination="@id/mainPageActivity" />
         <action
-            android:id="@+id/action_registerVehicleInfoFragment_to_registerVehicleInsuranceInfoFragment"
+            android:id="@+id/action_registerVehicleInfoChoiceFragment_to_registerVehicleInsuranceInfoFragment"
             app:destination="@id/registerVehicleInsuranceInfoFragment" />
     </fragment>
     <fragment
+        android:id="@+id/registerVehicleInfoFragment"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.registration.fragment.RegisterVehicleInfoFragment"
+        android:label="RegisterVehicleInfoFragment" >
+        <action
+            android:id="@+id/action_registerVehicleInfoFragment_to_mainPageActivity"
+            app:destination="@id/mainPageActivity" />
+    </fragment>
+    <fragment
         android:id="@+id/registerVehicleInsuranceInfoFragment"
-        android:name="com.petrov.vitaliy.caraccidentapp.presentation.registration.RegisterVehicleInsuranceInfoFragment"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.registration.fragment.RegisterVehicleInsuranceInfoFragment"
         android:label="RegisterVehicleInsuranceInfoFragment" >
         <action
-            android:id="@+id/action_registerVehicleInsuranceInfoFragment_to_mainPageActivity"
+            android:id="@+id/action_registerVehicleInsuranceInfoFragment_to_registerVehicleInfoFragment"
+            app:destination="@id/registerVehicleInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginUpdatePasswordFragment"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.login.fragment.LoginUpdatePasswordFragment"
+        android:label="LoginUpdatePasswordFragment" >
+        <action
+            android:id="@+id/action_loginUpdatePasswordFragment_to_mainPageActivity"
             app:destination="@id/mainPageActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginPhoneConfirmationFragment"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.login.fragment.LoginPhoneConfirmationFragment"
+        android:label="LoginPhoneConfirmationFragment" >
+        <action
+            android:id="@+id/action_loginPhoneConfirmationFragment_to_loginRecoveryFragment"
+            app:destination="@id/loginRecoveryFragment" />
+        <action
+            android:id="@+id/action_loginPhoneConfirmationFragment_to_loginRecoveryCodeConfirmationFragment"
+            app:destination="@id/loginRecoveryCodeConfirmationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerPasswordFragment"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.registration.fragment.RegisterPasswordFragment"
+        android:label="RegisterPasswordFragment" >
+        <action
+            android:id="@+id/action_registerPasswordFragment_to_registerDriverLicenseFragment"
+            app:destination="@id/registerDriverLicenseFragment" />
     </fragment>
 </navigation>

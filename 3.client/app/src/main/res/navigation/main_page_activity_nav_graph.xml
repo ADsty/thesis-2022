@@ -9,23 +9,14 @@
         android:name="com.petrov.vitaliy.caraccidentapp.presentation.mainpage.MainPageFragment"
         android:label="MainPageFragment" >
         <action
-            android:id="@+id/action_mainPageFragment_to_profileInfoFragment"
-            app:destination="@id/profileInfoFragment" />
-        <action
             android:id="@+id/action_mainPageFragment_to_chatsGeneralInfoFragment"
             app:destination="@id/chatsGeneralInfoFragment" />
         <action
-            android:id="@+id/action_mainPageFragment_to_carAccidentEntitiesGeneralInfoFragment"
-            app:destination="@id/carAccidentEntitiesGeneralInfoFragment" />
-        <action
-            android:id="@+id/action_mainPageFragment_to_profileInfoActivity"
-            app:destination="@id/profileInfoActivity" />
-        <action
-            android:id="@+id/action_mainPageFragment_to_carAccidentInfoActivity"
-            app:destination="@id/carAccidentInfoActivity" />
-        <action
             android:id="@+id/action_mainPageFragment_to_carAccidentPollActivity"
             app:destination="@id/carAccidentPollActivity" />
+        <action
+            android:id="@+id/action_mainPageFragment_to_profileInfoFragment"
+            app:destination="@id/profileInfoFragment" />
     </fragment>
     <fragment
         android:id="@+id/chatsGeneralInfoFragment"
@@ -40,39 +31,24 @@
         <action
             android:id="@+id/action_chatsGeneralInfoFragment_to_selectedChatActivity"
             app:destination="@id/selectedChatActivity" />
-        <action
-            android:id="@+id/action_chatsGeneralInfoFragment_to_profileInfoActivity"
-            app:destination="@id/profileInfoActivity" />
     </fragment>
     <activity
         android:id="@+id/selectedChatActivity"
         android:name="com.petrov.vitaliy.caraccidentapp.presentation.messages.SelectedChatActivity"
         android:label="SelectedChatActivity" />
-    <fragment
-        android:id="@+id/carAccidentEntitiesGeneralInfoFragment"
-        android:name="com.petrov.vitaliy.caraccidentapp.presentation.accident.info.CarAccidentEntitiesGeneralInfoFragment"
-        android:label="CarAccidentEntitiesGeneralInfoFragment" >
-        <action
-            android:id="@+id/action_carAccidentEntitiesGeneralInfoFragment_to_carAccidentInfoActivity"
-            app:destination="@id/carAccidentInfoActivity" />
-    </fragment>
-    <fragment
-        android:id="@+id/carAccidentInfoActivity"
-        android:name="com.petrov.vitaliy.caraccidentapp.presentation.accident.info.CarAccidentInfoActivity"
-        android:label="CarAccidentInfoActivity" />
-    <fragment
-        android:id="@+id/profileInfoActivity"
-        android:name="com.petrov.vitaliy.caraccidentapp.presentation.profile.ProfileInfoActivity"
-        android:label="ProfileInfoActivity" >
-        <action
-            android:id="@+id/action_profileInfoActivity_to_mainPageFragment"
-            app:destination="@id/mainPageFragment" />
-        <action
-            android:id="@+id/action_profileInfoActivity_to_chatsGeneralInfoFragment"
-            app:destination="@id/chatsGeneralInfoFragment" />
-    </fragment>
     <activity
         android:id="@+id/carAccidentPollActivity"
         android:name="com.petrov.vitaliy.caraccidentapp.presentation.accident.poll.CarAccidentPollActivity"
         android:label="CarAccidentPollActivity" />
+    <fragment
+        android:id="@+id/profileInfoFragment"
+        android:name="com.petrov.vitaliy.caraccidentapp.presentation.profile.ProfileInfoFragment"
+        android:label="ProfileInfoFragment" >
+        <action
+            android:id="@+id/action_profileInfoFragment_to_mainPageFragment"
+            app:destination="@id/mainPageFragment" />
+        <action
+            android:id="@+id/action_profileInfoFragment_to_chatsGeneralInfoFragment"
+            app:destination="@id/chatsGeneralInfoFragment" />
+    </fragment>
 </navigation>

@@ -2,11 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.petrov.vitaliy.caraccidentapp">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
+        android:name=".CarAccidentApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:usesCleartextTraffic="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
@@ -19,8 +24,33 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".presentation.login.LoginActivity"
+            android:exported="true"/>
+        <activity
             android:name=".presentation.mainpage.MainPageActivity"
             android:exported="true"/>
+        <activity
+            android:name=".presentation.accident.poll.CarAccidentPollActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".presentation.accident.statement.CarAccidentStatementActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".presentation.messages.SelectedChatActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".presentation.profile.ProfileDriverLicenseChangeActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".presentation.profile.ProfileGeneralInfoChangeActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".presentation.profile.ProfileVehicleInfoChangeActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".presentation.profile.ProfileVehicleInsuranceChangeActivity"
+            android:exported="true"/>
+
     </application>
 
 </manifest>
